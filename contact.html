@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/contact.css">
+    <title>Contact - Alif Dewantara</title>
+</head>
+<body>
+    <Header>
+        <nav>
+            <div class="left-side">
+                <ul>
+                    <li><img src="images/logo.png" alt=""></li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="blog.html">My Project</a></li>
+                </ul>
+            </div>
+            <div class="right-side">
+                <a href="contact.html">Contact Me</a>
+            </div>
+        </nav>
+    </Header>
+    <main>
+        <section class="form">
+            <h2>Contact</h2>
+            <div class="form-container">
+                <form action="#" id="form1">
+                    <div class="name-input">
+                        <label for="input-name">Name</label>
+                        <input type="text" required id="input-name" placeholder="Enter your name" onkeyup="success()">
+                    </div>
+                    <div class="email-input">
+                        <label for="input-email">Email</label>
+                        <input type="email" required id="input-email" placeholder="Enter your email" onkeyup="success()">
+                    </div>
+                    <div class="phone-input">
+                        <label for="input-phone">Phone</label>
+                        <input type="tel" required id="input-phone" pattern="[0-9]+" placeholder="Enter your phone number" onkeyup="success()">
+                    </div>
+                    <div class="subject-input">
+                        <label for="select-subject">Subject</label>
+                        <select name="subject" id="select-subject" required>
+                            <option value="" disabled selected>Select option below:</option>
+                            <option>Front End Developer</option>
+                            <option>Back End Developer</option>
+                            <option>FullStack Developer</option>
+                        </select>
+                    </div>
+                    <div class="text-area">
+                        <label for="input-message">Message</label>
+                        <textarea name="message" id="input-message" cols="30" rows="10" placeholder="Optional"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="btn">
+                <button class="submit-btn" id="form-button" value="Submit" form="form1" type="button" onclick="submitButton()" disabled>Submit</button>
+            </div>
+        </section>
+    </main>
+    <script src="js/contact.js"></script>
+</body>
+</html>

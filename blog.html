@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/blog.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Alif Dewantara - Blog</title>
+</head>
+<body>
+    <Header>
+        <nav>
+            <div class="left-side">
+                <ul>
+                    <li><img src="images/logo.png" alt=""></li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="blog.html">My Project</a></li>
+                </ul>
+            </div>
+            <div class="right-side">
+                <a href="contact.html">Contact Me</a>
+            </div>
+        </nav>
+    </Header>
+    <main>
+        <!-- Blog Form -->
+        <section class="blog-form">
+            <div class="blog-form-container">
+                <h1>Add My Project</h1>
+                <div class="blog-form-input">
+                    <form id="form-blog">
+                        <div class="input-title-div">
+                            <label for="input-title-blog">Title</label>
+                            <input type="text" id="input-title-blog">
+                        </div>
+                        <div class="input-date-div">
+                            <div class="input-startdate-div">
+                                <label for="input-startdate-blog">Start Date</label>
+                                <input type="date" id="input-startdate-blog">
+                            </div>
+                            <div class="input-enddate-div">
+                                <label for="input-enddate-blog">End Date</label>
+                                <input type="date" id="input-enddate-blog">
+                            </div>
+                        </div>
+                        <div class="input-description-div">
+                            <label for="input-description-blog">Description</label>
+                            <textarea name="input-description-blog" id="input-description-blog" cols="30" rows="10"></textarea>
+                        </div>
+                        <div class="input-technologies-div">
+                            <h4>Technologies</h4>
+                            <div class="input-technology-div">
+                                <input type="checkbox" id="input-nodejs-blog">
+                                <label for="input-nodejs-blog">NodeJS</label>
+                                <input type="checkbox" id="input-nextjs-blog">
+                                <label for="input-nextjs-blog">NextJS</label>
+                                <input type="checkbox" id="input-reactjs-blog">
+                                <label for="input-reactjs-blog">ReactJS</label>
+                                <input type="checkbox" id="input-typescript-blog">
+                                <label for="input-typescript-blog">TypeScript</label>
+                            </div>
+                        </div>
+                        <div class="input-upload-div">
+                            <label for="input-upload-blog">Upload Image</label>
+                            <input type="file" id="input-upload-blog"><!--<i class="fa-solid fa-paperclip"></i>-->
+                        </div>
+                        <div class="btn">
+                            <button class="submit-btn" onclick="addBlog(event)">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Blog Content -->
+        <section class="blog-content">
+            <h1>My Project</h1>
+            <div id="blog-content" class="blog-content-container">
+                <div class="blog-content-card">
+                    <div class="card-img">
+                        <img src="images/Android-main.jpg" alt="">
+                    </div>
+                    <div class="card-text">
+                        <h2>Android adalah OS Terkeren</h2>
+                        <span>durasi: 3 bulan</span>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sit amet augue elementum, malesuada est a, finibus odio. Fusce laoreet scelerisque urna, vel accumsan dui pellentesque at. Suspendisse vehicula eu lacus a malesuada. In hac habitasse platea dictumst. Vivamus maximus eget sapien sed lobortis. In tortor velit, tincidunt posuere sem ut, finibus lobortis urna. Nunc mauris leo, porta quis varius eget, efficitur a ex. Phasellus feugiat lacus et pulvinar mollis. Phasellus a sodales velit. Suspendisse potenti. Donec dictum urna sapien, ut blandit massa porta sit amet.</p>
+                    </div>
+                    <div class="card-techstack">
+                        <i class="fa-brands fa-node-js"></i>
+                        <img src="images/nextjs-icon.svg" alt="" style="width: 20px; height: 20px; margin-right: 10px;">
+                        <i class="fa-brands fa-react"></i>
+                        <img src="images/typescript-icon-512x512-we5ze0xe.png" alt="" style="width: 20px; height: 20px;">
+                    </div>
+                    <div class="card-button">
+                        <button>Edit</button>
+                        <button>Delete</button>
+                    </div>
+                </div>
+                <div class="blog-content-card">
+                    <div class="card-img">
+                        <img src="images/Android_logo_2019_(stacked).svg.png" alt="">
+                    </div>
+                    <div class="card-text">
+                        <h2>Android adalah OS Terkeren</h2>
+                        <span>durasi: 3 bulan</span>
+                        <p>App that used for dumbways student, it was deployed and can be downloaded on playstore. Happy download.</p>
+                    </div>
+                    <div class="card-techstack">
+                        <i class="fa-brands fa-google-play"></i>
+                        <i class="fa-brands fa-android"></i>
+                        <i class="fa-brands fa-java"></i>
+                    </div>
+                    <div class="card-button">
+                        <button>Edit</button>
+                        <button>Delete</button>
+                    </div>
+                </div>
+                <div class="blog-content-card">
+                    <div class="card-img">
+                        <img src="images/Android-main.jpg" alt="">
+                    </div>
+                    <div class="card-text">
+                        <h2>Android adalah OS Terkeren</h2>
+                        <span>durasi: 3 bulan</span>
+                        <p>App that used for dumbways student, it was deployed and can be downloaded on playstore. Happy download.</p>
+                    </div>
+                    <div class="card-techstack">
+                        <i class="fa-brands fa-google-play"></i>
+                        <i class="fa-brands fa-android"></i>
+                        <i class="fa-brands fa-java"></i>
+                    </div>
+                    <div class="card-button">
+                        <button>Edit</button>
+                        <button>Delete</button>
+                    </div>
+                </div>
+                <div class="blog-content-card">
+                    <div class="card-img">
+                        <img src="images/Android-main.jpg" alt="">
+                    </div>
+                    <div class="card-text">
+                        <h2>Android adalah OS Terkeren</h2>
+                        <span>durasi: 3 bulan</span>
+                        <p>App that used for dumbways student, it was deployed and can be downloaded on playstore. Happy download.</p>
+                    </div>
+                    <div class="card-techstack">
+                        <i class="fa-brands fa-google-play"></i>
+                        <i class="fa-brands fa-android"></i>
+                        <i class="fa-brands fa-java"></i>
+                    </div>
+                    <div class="card-button">
+                        <button>Edit</button>
+                        <button>Delete</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="js/blog.js"></script>
+</body>
+</html>

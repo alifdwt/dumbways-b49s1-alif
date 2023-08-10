@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+* {
+    font-family: 'Poppins', sans-serif;
+}
+nav {
+    background-color: whitesmoke;
+    display: flex;
+}
+
+.left-side {
+    width: 50%;
+}
+
+.left-side ul {
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+}
+
+.left-side ul li {
+    margin-right: 50px;
+}
+
+.left-side ul li a {
+    text-decoration: none;
+    color: black;
+}
+
+.left-side ul li img {
+    max-height: 49px;
+}
+
+.right-side {
+    display: flex;
+    width: 50%;
+    justify-content: end;
+    align-items: center;
+}
+
+.right-side a {
+    text-decoration: none;
+    padding: 10px;
+    background-color: #fd4e2f;
+    color: whitesmoke;
+    border-radius: 5px;
+    margin-right: 25px;
+}
+
+main {
+    background-color: lavender;
+}
+
+section {
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    height: 90vh;
+}
+
+section .container {
+    width: 1200px;
+    background-color: white;
+    display: flex;
+    padding: 50px;
+    border-radius: 20px;
+    margin: auto;
+}
+
+section .container .content {
+    width: 70%;
+    padding-right: 40px;
+    text-align: justify;
+}
+
+section .container .content .desc .contact {
+    margin: 30px 0;
+}
+
+section .container .content .desc .contact a {
+    margin-right: 20px;
+}
+
+section .container .social-media {
+    font-size: 2em;
+    text-align: center;
+}
+
+section .container .social-media a {
+    margin: 10px;
+    color: black;
+    background-color: white;
+}
+
+section .card {
+    width: 30%;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0px 100px 317px rgba(0, 0, 0, 0.11),
+                0px 45.931px 132.435px rgba(0, 0, 0, 0.0562632),
+                0px 18.5017px 70.8061px rgba(0, 0, 0, 0.038833),
+                0px 0.93918px 39.6933px rgba(0, 0, 0, 0.0346007),
+                0px -8.75718px 21.0808px rgba(0, 0, 0, 0.0360483),
+                0px -10.0607px 8.7722px rgba(0, 0, 0, 0.0370893);
+}
+
+section .card img {
+    width: 100%;
+    border-radius: 10px 10px 0 0;
+}

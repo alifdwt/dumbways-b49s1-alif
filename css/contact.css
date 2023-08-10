@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+* {
+    font-family: 'Poppins', sans-serif;
+}
+nav {
+    background-color: whitesmoke;
+    display: flex;
+}
+
+.left-side {
+    width: 50%;
+}
+
+.left-side ul {
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+}
+
+.left-side ul li {
+    margin-right: 50px;
+}
+
+.left-side ul li a {
+    text-decoration: none;
+    color: black;
+}
+
+.left-side ul li img {
+    max-height: 49px;
+}
+
+.right-side {
+    display: flex;
+    width: 50%;
+    justify-content: end;
+    align-items: center;
+}
+
+.right-side a {
+    text-decoration: none;
+    padding: 10px;
+    background-color: #fd4e2f;
+    color: whitesmoke;
+    border-radius: 5px;
+    margin-right: 25px;
+}
+
+main {
+    display: flex;
+    height: 90vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: lavender;
+}
+
+main .form {
+    width: 40%;
+    background-color: whitesmoke;
+    border-radius: 20px;
+    padding: 25px;
+}
+
+main .form h2 {
+    text-align: center;
+}
+
+main .form .form-container {
+    display: block;
+    width: 100%;
+}
+
+#input-name, #input-email, #input-phone, #select-subject, #input-message {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+form label {
+    font-weight: 600;
+}
+
+.btn button {
+    background-color: #fd4e2f;
+    color: whitesmoke;
+    float: right;
+    border: none;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.btn button:hover {
+    background-color: whitesmoke;
+    color: #fd4e2f;
+}
+
+.btn button:disabled {
+    background-color: grey;
+    color: whitesmoke;
+    cursor: default;
+}

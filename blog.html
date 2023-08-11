@@ -28,10 +28,10 @@
             <div class="blog-form-container">
                 <h1>Add My Project</h1>
                 <div class="blog-form-input">
-                    <form id="form-blog">
+                    <form id="form-blog" onsubmit="addBlog(event)">
                         <div class="input-title-div">
                             <label for="input-title-blog">Title</label>
-                            <input type="text" id="input-title-blog">
+                            <input type="text" id="input-title-blog" required>
                         </div>
                         <div class="input-date-div">
                             <div class="input-startdate-div">
@@ -49,23 +49,35 @@
                         </div>
                         <div class="input-technologies-div">
                             <h4>Technologies</h4>
-                            <div class="input-technology-div">
-                                <input type="checkbox" id="input-nodejs-blog">
-                                <label for="input-nodejs-blog">NodeJS</label>
-                                <input type="checkbox" id="input-nextjs-blog">
-                                <label for="input-nextjs-blog">NextJS</label>
-                                <input type="checkbox" id="input-reactjs-blog">
-                                <label for="input-reactjs-blog">ReactJS</label>
-                                <input type="checkbox" id="input-typescript-blog">
-                                <label for="input-typescript-blog">TypeScript</label>
-                            </div>
+                            <table>
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" id="input-nodejs-blog">
+                                        <label for="input-nodejs-blog">NodeJS</label>
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" id="input-nextjs-blog">
+                                        <label for="input-nextjs-blog">NextJS</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" id="input-reactjs-blog">
+                                        <label for="input-reactjs-blog">ReactJS</label>
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" id="input-typescript-blog">
+                                        <label for="input-typescript-blog">TypeScript</label>
+                                    </td>
+                                </tr>
+                            </table>
                         </div>
                         <div class="input-upload-div">
                             <label for="input-upload-blog">Upload Image</label>
                             <input type="file" id="input-upload-blog"><!--<i class="fa-solid fa-paperclip"></i>-->
                         </div>
                         <div class="btn">
-                            <button class="submit-btn" onclick="addBlog(event)">Submit</button>
+                            <button class="submit-btn">Submit</button>
                         </div>
                     </form>
                 </div>
@@ -75,6 +87,8 @@
         <!-- Blog Content -->
         <section class="blog-content">
             <h1>My Project</h1>
+            <img id="placeholder-img" src="images/Placeholder_view_vector.svg.png" alt="Placeholder Image" style="display: none;">
+            <div id="blog-content-form" class="blog-content-container"></div>
             <div id="blog-content" class="blog-content-container">
                 <div class="blog-content-card">
                     <div class="card-img">
@@ -82,7 +96,8 @@
                     </div>
                     <div class="card-text">
                         <h2><a href="blog-detail.html">Android adalah OS Terkeren</a></h2>
-                        <span>durasi: 3 bulan</span>
+                        <span>durasi: 3 bulan</span><br>
+                        <span>17 Agustus 1945</span>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sit amet augue elementum, malesuada est a, finibus odio. Fusce laoreet scelerisque urna, vel accumsan dui pellentesque at. Suspendisse vehicula eu lacus a malesuada. In hac habitasse platea dictumst. Vivamus maximus eget sapien sed lobortis. In tortor velit, tincidunt posuere sem ut, finibus lobortis urna. Nunc mauris leo, porta quis varius eget, efficitur a ex. Phasellus feugiat lacus et pulvinar mollis. Phasellus a sodales velit. Suspendisse potenti. Donec dictum urna sapien, ut blandit massa porta sit amet.</p>
                     </div>
                     <div class="card-techstack">
@@ -90,6 +105,9 @@
                         <img src="images/nextjs-icon.svg" alt="" style="width: 20px; height: 20px; margin-right: 10px;">
                         <i class="fa-brands fa-react"></i>
                         <img src="images/typescript-icon-512x512-we5ze0xe.png" alt="" style="width: 20px; height: 20px;">
+                    </div>
+                    <div class="post-time">
+                        <p style="margin: 5px; text-align: right; font-size: .8em; color: grey;">5 detik yang lalu</p>
                     </div>
                     <div class="card-button">
                         <button>Edit</button>
@@ -101,14 +119,18 @@
                         <img src="images/Android_logo_2019_(stacked).svg.png" alt="">
                     </div>
                     <div class="card-text">
-                        <h2><a href="blog-detail.html">Android adalah OS Terkeren</a></h2>
-                        <span>durasi: 3 bulan</span>
-                        <p>App that used for dumbways student, it was deployed and can be downloaded on playstore. Happy download.</p>
+                        <h2><a href="blog-detail.html">Vestibulum aliquam vel massa vel vulputate</a></h2>
+                        <span>durasi: 3 bulan</span><br>
+                        <span>17 Agustus 1945</span>
+                        <p>Pellentesque placerat tortor vehicula pellentesque ornare. Vivamus in sollicitudin orci. Duis rhoncus turpis at erat ultricies, quis tincidunt nibh suscipit. Ut sit amet laoreet ex. In vel maximus mauris, ut congue nisi. In sem ante, accumsan non laoreet vitae, luctus at turpis. Nulla nec malesuada sem, vitae tempor velit. Aenean et ex libero. Sed at tellus malesuada, accumsan mi ut, molestie tortor. Curabitur eros diam, volutpat at turpis nec, aliquet consectetur odio. Suspendisse sed nisi nec sapien tristique hendrerit.</p>
                     </div>
                     <div class="card-techstack">
                         <i class="fa-brands fa-google-play"></i>
                         <i class="fa-brands fa-android"></i>
                         <i class="fa-brands fa-java"></i>
+                    </div>
+                    <div class="post-time">
+                        <p style="margin: 5px; text-align: right; font-size: .8em; color: grey;">5 detik yang lalu</p>
                     </div>
                     <div class="card-button">
                         <button>Edit</button>
@@ -117,36 +139,21 @@
                 </div>
                 <div class="blog-content-card">
                     <div class="card-img">
-                        <img src="images/Android-main.jpg" alt="">
+                        <img src="images/Placeholder_view_vector.svg.png" alt="">
                     </div>
                     <div class="card-text">
-                        <h2><a href="blog-detail.html">Android adalah OS Terkeren</a></h2>
-                        <span>durasi: 3 bulan</span>
-                        <p>App that used for dumbways student, it was deployed and can be downloaded on playstore. Happy download.</p>
+                        <h2><a href="blog-detail.html">Lorem ipsum dolor sit amet</a></h2>
+                        <span>durasi: 3 bulan</span><br>
+                        <span>17 Agustus 1945</span>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum aliquam vel massa vel vulputate. Sed placerat dictum tincidunt. Duis nisl orci, placerat sit amet pellentesque at, hendrerit nec velit. Maecenas pellentesque, mi sed lacinia mollis, lorem eros consequat velit, consectetur sagittis lectus tellus non eros. Donec finibus tincidunt sodales. Mauris fringilla nunc vitae mollis lacinia. Suspendisse rutrum, est a hendrerit ullamcorper, elit tellus tristique nisi, tempor accumsan tellus leo nec nulla. Vivamus eget magna malesuada, ullamcorper tellus non, laoreet erat. Vestibulum nec arcu nulla. Donec tempus erat ac tempor porta. Mauris ante dolor, pretium in felis sed, elementum eleifend quam. Aliquam erat volutpat.</p>
                     </div>
                     <div class="card-techstack">
                         <i class="fa-brands fa-google-play"></i>
                         <i class="fa-brands fa-android"></i>
                         <i class="fa-brands fa-java"></i>
                     </div>
-                    <div class="card-button">
-                        <button>Edit</button>
-                        <button>Delete</button>
-                    </div>
-                </div>
-                <div class="blog-content-card">
-                    <div class="card-img">
-                        <img src="images/Android-main.jpg" alt="">
-                    </div>
-                    <div class="card-text">
-                        <h2><a href="blog-detail.html">Android adalah OS Terkeren</a></h2>
-                        <span>durasi: 3 bulan</span>
-                        <p>App that used for dumbways student, it was deployed and can be downloaded on playstore. Happy download.</p>
-                    </div>
-                    <div class="card-techstack">
-                        <i class="fa-brands fa-google-play"></i>
-                        <i class="fa-brands fa-android"></i>
-                        <i class="fa-brands fa-java"></i>
+                    <div class="post-time">
+                        <p style="margin: 5px; text-align: right; font-size: .8em; color: grey;">5 detik yang lalu</p>
                     </div>
                     <div class="card-button">
                         <button>Edit</button>

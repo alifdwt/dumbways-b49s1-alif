@@ -154,6 +154,87 @@ function getDurasi(day) {
         return "";
     }
 }
+
+function generateRandomDate(from, to) {
+    return new Date(
+      from.getTime() +
+        Math.random() * (to.getTime() - from.getTime()),
+    );
+}
+let postDate = generateRandomDate(new Date(2023, 0, 1), new Date());
+let postDateFrom = getDistanceTime(postDate);
+document.getElementById("blog-content").innerHTML = `
+    <div class="blog-content-card">
+        <div class="card-img">
+            <img src="images/Android-main.jpg" alt="">
+        </div>
+        <div class="card-text">
+            <h2><a href="blog-detail.html">Android adalah OS Terkeren</a></h2>
+            <span>durasi: 3 bulan</span><br>
+            <span>${getFullTime(postDate)}</span>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sit amet augue elementum, malesuada est a, finibus odio. Fusce laoreet scelerisque urna, vel accumsan dui pellentesque at. Suspendisse vehicula eu lacus a malesuada. In hac habitasse platea dictumst. Vivamus maximus eget sapien sed lobortis. In tortor velit, tincidunt posuere sem ut, finibus lobortis urna. Nunc mauris leo, porta quis varius eget, efficitur a ex. Phasellus feugiat lacus et pulvinar mollis. Phasellus a sodales velit. Suspendisse potenti. Donec dictum urna sapien, ut blandit massa porta sit amet.</p>
+        </div>
+        <div class="card-techstack">
+            <i class="fa-brands fa-node-js"></i>
+            <img src="images/nextjs-icon.svg" alt="" style="width: 20px; height: 20px; margin-right: 10px;">
+            <i class="fa-brands fa-react"></i>
+            <img src="images/typescript-icon-512x512-we5ze0xe.png" alt="" style="width: 20px; height: 20px;">
+        </div>
+        <div class="post-time">
+            <p style="margin: 5px; text-align: right; font-size: .8em; color: grey;">${postDateFrom}</p>
+        </div>
+        <div class="card-button">
+            <button>Edit</button>
+            <button>Delete</button>
+        </div>
+    </div>
+    <div class="blog-content-card">
+        <div class="card-img">
+            <img src="images/Android_logo_2019_(stacked).svg.png" alt="">
+        </div>
+        <div class="card-text">
+            <h2><a href="blog-detail.html">Vestibulum aliquam vel massa vel vulputate</a></h2>
+            <span>durasi: 3 bulan</span><br>
+            <span>${getFullTime(postDate)}</span>
+            <p>Pellentesque placerat tortor vehicula pellentesque ornare. Vivamus in sollicitudin orci. Duis rhoncus turpis at erat ultricies, quis tincidunt nibh suscipit. Ut sit amet laoreet ex. In vel maximus mauris, ut congue nisi. In sem ante, accumsan non laoreet vitae, luctus at turpis. Nulla nec malesuada sem, vitae tempor velit. Aenean et ex libero. Sed at tellus malesuada, accumsan mi ut, molestie tortor. Curabitur eros diam, volutpat at turpis nec, aliquet consectetur odio. Suspendisse sed nisi nec sapien tristique hendrerit.</p>
+        </div>
+        <div class="card-techstack">
+            <i class="fa-brands fa-google-play"></i>
+            <i class="fa-brands fa-android"></i>
+            <i class="fa-brands fa-java"></i>
+        </div>
+        <div class="post-time">
+            <p style="margin: 5px; text-align: right; font-size: .8em; color: grey;">${postDateFrom}</p>
+        </div>
+        <div class="card-button">
+            <button>Edit</button>
+            <button>Delete</button>
+        </div>
+    </div>
+    <div class="blog-content-card">
+        <div class="card-img">
+            <img src="images/Placeholder_view_vector.svg.png" alt="">
+        </div>
+        <div class="card-text">
+            <h2><a href="blog-detail.html">Lorem ipsum dolor sit amet</a></h2>
+            <span>durasi: 3 bulan</span><br>
+            <span>${getFullTime(postDate)}</span>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum aliquam vel massa vel vulputate. Sed placerat dictum tincidunt. Duis nisl orci, placerat sit amet pellentesque at, hendrerit nec velit. Maecenas pellentesque, mi sed lacinia mollis, lorem eros consequat velit, consectetur sagittis lectus tellus non eros. Donec finibus tincidunt sodales. Mauris fringilla nunc vitae mollis lacinia. Suspendisse rutrum, est a hendrerit ullamcorper, elit tellus tristique nisi, tempor accumsan tellus leo nec nulla. Vivamus eget magna malesuada, ullamcorper tellus non, laoreet erat. Vestibulum nec arcu nulla. Donec tempus erat ac tempor porta. Mauris ante dolor, pretium in felis sed, elementum eleifend quam. Aliquam erat volutpat.</p>
+        </div>
+        <div class="card-techstack">
+            <i class="fa-brands fa-google-play"></i>
+            <i class="fa-brands fa-android"></i>
+            <i class="fa-brands fa-java"></i>
+        </div>
+        <div class="post-time">
+            <p style="margin: 5px; text-align: right; font-size: .8em; color: grey;">${postDateFrom}</p>
+        </div>
+        <div class="card-button">
+            <button>Edit</button>
+            <button>Delete</button>
+        </div>
+    </div>
+`;
   
   setInterval(function () {
     renderBlog();

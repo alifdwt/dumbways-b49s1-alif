@@ -104,3 +104,9 @@ form label {
     color: whitesmoke;
     cursor: default;
 }
+
+@media screen and (max-width: 500px) {
+    main .form {
+        width: 80%;
+    }
+}

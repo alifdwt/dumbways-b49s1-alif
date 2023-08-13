@@ -55,7 +55,7 @@ section {
     display: flex;
     /* justify-content: center; */
     align-items: center;
-    height: 90vh;
+    /* height: 90vh; */
 }
 
 section .container {
@@ -107,4 +107,23 @@ section .card {
 section .card img {
     width: 100%;
     border-radius: 10px 10px 0 0;
+}
+
+@media screen and (max-width: 500px) {
+    section .container {
+        width: 100%;
+        margin: 0px;
+        padding: 10px;
+        border-radius: 0;
+        display: grid;
+    }
+
+    section .container .content {
+        width: 92%;
+        padding: 20px;
+    }
+
+    section .container .card {
+        width: 100%;
+    }
 }

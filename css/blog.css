@@ -172,7 +172,6 @@ section.blog-content .blog-content-container .blog-content-card {
     height: 620px;
     width: 400px;
     align-items: center;
-    /* width: 450px; */
 }
 
 section.blog-content .blog-content-container .blog-content-card img {
@@ -247,6 +246,9 @@ section.blog-content .blog-content-container .blog-content-card h2 {
 }
 
 @media screen and (max-width: 500px) {
+    section.blog-content .blog-content-container {
+        width: 100%;
+    }
     section.blog-content .blog-content-container .blog-content-card {
         width: 100%;
     }

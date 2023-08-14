@@ -18,7 +18,7 @@ function submitButton() {
         alert("Please enter a valid phone number");
     } else {
         let a = document.createElement("a");
-        a.href = `mailto:${myMail}?subject=${subject}&body=Halo, nama saya ${name}, hubungi saya di ${phone}. Saya membutuhkan jasa ${subject}, dan saya pikir Anda cocok.`;
+        a.href = `mailto:${myMail}?subject=${subject}&body=Halo, nama saya ${name}, hubungi saya di ${phone}. Saya membutuhkan jasa ${subject}, dan saya pikir Anda cocok. %0D %0D${message}`;
         a.click();
 
         let data = { name, email, phone, subject, message };

@@ -5,11 +5,10 @@
     padding: 0;
     margin: 0;
 }
-
 nav {
     background-color: whitesmoke;
     display: flex;
-    padding: 20px;
+    padding: 15px;
 }
 
 .left-side {
@@ -76,6 +75,12 @@ Header .hamburger-menu ul li a {
     padding: 10px 25px;
     text-decoration: none;
     border-radius: 10px;
+    transition: .2s;
+}
+
+Header .hamburger-menu ul li a:hover {
+    background-color: #fd4e2f;
+    color: white;
 }
 
 Header .hamburger-menu ul li .active-page {

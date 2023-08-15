@@ -2,10 +2,13 @@
 
 * {
     font-family: 'Poppins', sans-serif;
+    padding: 0;
+    margin: 0;
 }
 nav {
     background-color: whitesmoke;
     display: flex;
+    padding: 15px;
 }
 
 .left-side {
@@ -72,13 +75,18 @@ Header .hamburger-menu ul li a {
     padding: 10px 25px;
     text-decoration: none;
     border-radius: 10px;
+    transition: .2s;
+}
+
+Header .hamburger-menu ul li a:hover {
+    background-color: #fd4e2f;
+    color: white;
 }
 
 Header .hamburger-menu ul li .active-page {
     background-color: #fd4e2f;
     color: white;
 }
-
 
 main {
     background-color: lavender;
@@ -88,7 +96,6 @@ section {
     display: flex;
     align-items: center;
     padding: 50px;
-    /* height: 90vh; */
 }
 
 section .container {
@@ -111,7 +118,30 @@ section .container .content .desc .contact {
 }
 
 section .container .content .desc .contact a {
-    margin-right: 20px;
+    margin-right: 10px;
+}
+
+section .container .content .desc .contact a.contact-link {
+    background-color: black;
+    color: white;
+    text-decoration: none;
+    padding: 10px 30px;
+    border-radius: 20px;
+    transition: .2s;
+}
+
+section .container .content .desc .contact a.contact-link:hover {
+    background-color: #fd4e2f;
+}
+
+section .container .content .desc .contact a.cv-link {
+    text-decoration: none;
+    color: black;
+}
+
+section .container .content .desc .contact a.cv-link:hover {
+    text-decoration: underline;
+    color: #fd4e2f;
 }
 
 section .container .social-media {
@@ -123,6 +153,10 @@ section .container .social-media a {
     margin: 10px;
     color: black;
     background-color: white;
+}
+
+section .container .social-media a:hover {
+    color: #fd4e2f;
 }
 
 section .card {

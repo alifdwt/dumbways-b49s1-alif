@@ -13,14 +13,26 @@
             <div class="left-side">
                 <ul>
                     <li><img src="images/logo.png" alt=""></li>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="blog.html">My Project</a></li>
+                    <li class="hide-item"><a href="#">Home</a></li>
+                    <li class="hide-item"><a href="blog.html">My Project</a></li>
                 </ul>
             </div>
-            <div class="right-side">
+            <div class="right-side hide-item">
                 <a href="contact.html">Contact Me</a>
             </div>
+
+            <!-- Hamburger Menu -->
+            <div class="right-side" id="barsmenu">
+                <button style="background-color: transparent; color: #fd4e2f; cursor: pointer; border: none;" onclick="openHamburger()"><i class="fa-solid fa-bars" style="font-size: 2em; margin-right: 10px;"></i></button>
+            </div>
         </nav>
+        <div class="hamburger-menu" id="hamburger-menu">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a class="active-page" href="blog.html">My Project</a></li>
+                <li><a href="contact.html">Contact Me</a></li>
+            </ul>
+        </div>
     </Header>
     <main>
         <!-- Blog Form -->
@@ -86,12 +98,17 @@
 
         <!-- Blog Content -->
         <section class="blog-content">
-            <h1>My Project</h1>
+            <h1>Recent Project</h1><hr>
+            <div class="recent-blog-post" id="recent-blog-post"></div>
+            <h1 style="margin-top: 20px;">My Project</h1><hr>
             <img id="placeholder-img" src="images/Placeholder_view_vector.svg.png" alt="Placeholder Image" style="display: none;">
-            <div id="blog-content-form" class="blog-content-container"></div>
-            <div id="blog-content" class="blog-content-container"></div>
+            <div class="blog-container">
+                <div id="blog-content-form" class="blog-content-container"></div>
+                <div id="blog-content" class="blog-content-container"></div>
+            </div>
         </section>
     </main>
     <script src="js/blog.js"></script>
+    <script src="js/index.js"></script>
 </body>
 </html>

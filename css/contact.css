@@ -47,9 +47,41 @@ nav {
     margin-right: 25px;
 }
 
+#barsmenu {
+    display: none;
+}
+
+Header .hamburger-menu {
+    background-color: lavenderblush;
+    padding: 10px;
+    display: none;
+}
+
+Header .hamburger-menu ul {
+    list-style-type: none;
+    text-align: center;
+    font-weight: bold;
+}
+
+Header .hamburger-menu ul li {
+    padding: 15px;
+}
+
+Header .hamburger-menu ul li a {
+    color: black;
+    padding: 10px 25px;
+    text-decoration: none;
+    border-radius: 10px;
+}
+
+Header .hamburger-menu ul li .active-page {
+    background-color: #fd4e2f;
+    color: white;
+}
+
 main {
     display: flex;
-    height: 90vh;
+    /* height: 90vh; */
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -61,6 +93,7 @@ main .form {
     background-color: whitesmoke;
     border-radius: 20px;
     padding: 25px;
+    margin: 50px 10px;
 }
 
 main .form h2 {
@@ -105,8 +138,16 @@ form label {
     cursor: default;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 900px) {
     main .form {
         width: 80%;
+    }
+
+    #barsmenu {
+        display: flex;
+    }
+
+    .hide-item {
+        display: none;
     }
 }

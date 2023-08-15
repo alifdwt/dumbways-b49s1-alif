@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/contact.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Contact - Alif Dewantara</title>
 </head>
 <body>
@@ -12,14 +13,26 @@
             <div class="left-side">
                 <ul>
                     <li><img src="images/logo.png" alt=""></li>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="blog.html">My Project</a></li>
+                    <li class="hide-item"><a href="#">Home</a></li>
+                    <li class="hide-item"><a href="blog.html">My Project</a></li>
                 </ul>
             </div>
-            <div class="right-side">
+            <div class="right-side hide-item">
                 <a href="contact.html">Contact Me</a>
             </div>
+
+            <!-- Hamburger Menu -->
+            <div class="right-side" id="barsmenu">
+                <button style="background-color: transparent; color: #fd4e2f; cursor: pointer; border: none;" onclick="openHamburger()"><i class="fa-solid fa-bars" style="font-size: 2em; margin-right: 10px;"></i></button>
+            </div>
         </nav>
+        <div class="hamburger-menu" id="hamburger-menu">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="blog.html">My Project</a></li>
+                <li><a class="active-page" href="contact.html">Contact Me</a></li>
+            </ul>
+        </div>
     </Header>
     <main>
         <section class="form">
@@ -59,5 +72,6 @@
         </section>
     </main>
     <script src="js/contact.js"></script>
+    <script src="js/index.js"></script>
 </body>
 </html>

@@ -21,12 +21,11 @@ function addBlog(event) {
         image = document.getElementById("placeholder-img").src;
     }
 
-    // let durasi = (endDate.getFullYear() - startDate.getFullYear()) * 12 + (endDate.getMonth() - startDate.getMonth());
     let durasi = (endDate.getTime() - startDate.getTime()) / 86400000;
-    let nodeJsLogo = inputNodeJS ? "" : "style='display: none;'";
-    let nextJsLogo = inputNextJS ? "" : "display: none;";
-    let reactJsLogo = inputReactJS ? "" : "style='display: none;'";
-    let typeScriptLogo = inputTypeScript ? "" : "display: none;";
+    let nodeJsLogo = inputNodeJS ? '<i class="fa-brands fa-node-js"></i>' : "";
+    let nextJsLogo = inputNextJS ? '<img src="images/nextjs-icon.svg" alt="nextjs-icon" style="width: 20px; height: 20px; margin-right: 10px;">' : "";
+    let reactJsLogo = inputReactJS ? '<i class="fa-brands fa-react"></i>' : "";
+    let typeScriptLogo = inputTypeScript ? '<img src="images/typescript-icon-512x512-we5ze0xe.png" alt="" style="width: 20px; height: 20px;">' : "";
 
     let blog = {
         title,
@@ -39,14 +38,37 @@ function addBlog(event) {
         typeScriptLogo,
         image
     };
-    // console.log(startDate.getMonth())
     dataBlog.push(blog);
-    // console.log(dataBlog);
-
     renderBlog();
 }
 
 function renderBlog() {
+    document.getElementById("recent-blog-post").innerHTML = `
+    <div class="recent-img">
+        <img src="${dataBlog[dataBlog.length - 1].image}" alt="">
+    </div>
+    <div class="recent-description">
+        <div class="recent-text">
+            <h2><a href="blog-detail.html">${dataBlog[dataBlog.length - 1].title}</a></h2>
+            <span>${getDurasi(dataBlog[dataBlog.length - 1].durasi)}</span><br>
+            <span>${getFullTime(dataBlog[dataBlog.length - 1].postAt)}</span>
+            <p>${dataBlog[dataBlog.length - 1].description}</p>
+        </div>
+        <div class="card-techstack">
+            ${dataBlog[dataBlog.length - 1].nodeJsLogo}
+            ${dataBlog[dataBlog.length - 1].nextJsLogo}
+            ${dataBlog[dataBlog.length - 1].reactJsLogo}
+            ${dataBlog[dataBlog.length - 1].typeScriptLogo}
+        </div>
+        <div class="post-time">
+            <p style="margin: 0; text-align: right; font-size: .8em; color: grey;">${getDistanceTime(dataBlog[dataBlog.length - 1].postAt)}</p>
+        </div>
+        <div class="recent-button">
+            <button>Edit</button>
+            <button>Delete</button>
+        </div>
+    </div>
+    `;
     document.getElementById("blog-content-form").innerHTML = "";
 
     for (let index = 0; index < dataBlog.length; index++) {
@@ -62,10 +84,10 @@ function renderBlog() {
                 <p>${dataBlog[index].description}</p>
             </div>
             <div class="card-techstack">
-                <i class="fa-brands fa-node-js" ${dataBlog[index].nodeJsLogo}></i>
-                <img src="images/nextjs-icon.svg" alt="nextjs-icon" style="${dataBlog[index].nextJsLogo}width: 20px; height: 20px; margin-right: 10px;">
-                <i class="fa-brands fa-react" ${dataBlog[index].reactJsLogo}></i>
-                <img src="images/typescript-icon-512x512-we5ze0xe.png" alt="" style="${dataBlog[index].typeScriptLogo}width: 20px; height: 20px;">
+                ${dataBlog[index].nodeJsLogo}
+                ${dataBlog[index].nextJsLogo}
+                ${dataBlog[index].reactJsLogo}
+                ${dataBlog[index].typeScriptLogo}
             </div>
             <div class="post-time">
                 <p style="margin: 5px; text-align: right; font-size: .8em; color: grey;">${getDistanceTime(dataBlog[index].postAt)}</p>
@@ -193,7 +215,7 @@ document.getElementById("blog-content").innerHTML = `
             <img src="images/Android_logo_2019_(stacked).svg.png" alt="">
         </div>
         <div class="card-text">
-            <h2><a href="blog-detail.html">Vestibulum aliquam vel massa vel vulputate</a></h2>
+            <h2><a href="blog-detail.html">Vestibulum aliquam vel massa</a></h2>
             <span>durasi: 3 bulan</span><br>
             <span>${getFullTime(postDate)}</span>
             <p>Pellentesque placerat tortor vehicula pellentesque ornare. Vivamus in sollicitudin orci. Duis rhoncus turpis at erat ultricies, quis tincidunt nibh suscipit. Ut sit amet laoreet ex. In vel maximus mauris, ut congue nisi. In sem ante, accumsan non laoreet vitae, luctus at turpis. Nulla nec malesuada sem, vitae tempor velit. Aenean et ex libero. Sed at tellus malesuada, accumsan mi ut, molestie tortor. Curabitur eros diam, volutpat at turpis nec, aliquet consectetur odio. Suspendisse sed nisi nec sapien tristique hendrerit.</p>
@@ -234,7 +256,70 @@ document.getElementById("blog-content").innerHTML = `
             <button>Delete</button>
         </div>
     </div>
+    <div class="blog-content-card">
+        <div class="card-img">
+            <img src="images/coding-image.jpg" alt="">
+        </div>
+        <div class="card-text">
+            <h2><a href="blog-detail.html">Kenali Komputer Kentang Sejak DIni</a></h2>
+            <span>durasi: 3 bulan</span><br>
+            <span>${getFullTime(postDate)}</span>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sit amet augue elementum, malesuada est a, finibus odio. Fusce laoreet scelerisque urna, vel accumsan dui pellentesque at. Suspendisse vehicula eu lacus a malesuada. In hac habitasse platea dictumst. Vivamus maximus eget sapien sed lobortis. In tortor velit, tincidunt posuere sem ut, finibus lobortis urna. Nunc mauris leo, porta quis varius eget, efficitur a ex. Phasellus feugiat lacus et pulvinar mollis. Phasellus a sodales velit. Suspendisse potenti. Donec dictum urna sapien, ut blandit massa porta sit amet.</p>
+        </div>
+        <div class="card-techstack">
+            <i class="fa-brands fa-node-js"></i>
+            <img src="images/nextjs-icon.svg" alt="" style="width: 20px; height: 20px; margin-right: 10px;">
+            <i class="fa-brands fa-react"></i>
+            <img src="images/typescript-icon-512x512-we5ze0xe.png" alt="" style="width: 20px; height: 20px;">
+        </div>
+        <div class="post-time">
+            <p style="margin: 5px; text-align: right; font-size: .8em; color: grey;">${postDateFrom}</p>
+        </div>
+        <div class="card-button">
+            <button>Edit</button>
+            <button>Delete</button>
+        </div>
+    </div>
 `;
+
+function arrayIsEmpty(array) {
+    if (!Array.isArray(array)) {
+        return FALSE;
+    }
+    if (array.length == 0) {
+        return true;
+    }
+    return false;
+}
+
+if (arrayIsEmpty(dataBlog)) {
+    document.getElementById("recent-blog-post").innerHTML = `
+    <div class="recent-img">
+        <img src="images/coding-image.jpg" alt="">
+    </div>
+    <div class="recent-description">
+        <div class="recent-text">
+            <h2><a href="blog-detail.html">Kenali Komputer Kentang Sejak Dini</a></h2>
+            <span>durasi: 3 bulan</span><br>
+            <span>${getFullTime(postDate)}</span>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestias sapiente fuga natus consequatur, officiis magni, quidem dicta expedita nemo corrupti suscipit ad sint? Aspernatur in quia illo magni possimus odit explicabo, numquam odio, maiores quo voluptatem officia omnis libero quasi corrupti necessitatibus ab animi mollitia totam tempore. Dignissimos eveniet sequi repellat odit temporibus cum dolor ducimus corporis obcaecati consequatur debitis quis incidunt doloremque at explicabo quisquam eum eaque quasi perferendis dicta vero, in a blanditiis asperiores. Soluta aliquid tempora voluptatem ducimus saepe, nihil, quidem corrupti sapiente nam fugiat quasi dolor assumenda accusamus consequatur sunt deserunt facere officiis nulla sit optio!</p>
+        </div>
+        <div class="card-techstack">
+            <i class="fa-brands fa-node-js"></i>
+            <img src="images/nextjs-icon.svg" alt="" style="width: 20px; height: 20px; margin-right: 10px;">
+            <i class="fa-brands fa-react"></i>
+            <img src="images/typescript-icon-512x512-we5ze0xe.png" alt="" style="width: 20px; height: 20px;">
+        </div>
+        <div class="post-time">
+            <p style="margin: 0; text-align: right; font-size: .8em; color: grey;">${postDateFrom}</p>
+        </div>
+        <div class="recent-button">
+            <button>Edit</button>
+            <button>Delete</button>
+        </div>
+    </div>
+    `;
+}
   
   setInterval(function () {
     renderBlog();

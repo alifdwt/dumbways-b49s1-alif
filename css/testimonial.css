@@ -101,75 +101,103 @@ Header .hamburger-menu ul li .active-page {
     color: white;
 }
 
+/* MAIN */
 main {
+    width: 100%;
+}
+
+section.container {
     display: flex;
-    /* height: 90vh; */
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    background-color: lavender;
 }
 
-main .form {
-    width: 40%;
-    background-color: whitesmoke;
-    border-radius: 20px;
-    padding: 25px;
-    margin: 50px 10px;
-}
-
-main .form h2 {
+section.container > h1 {
     text-align: center;
+    text-transform: uppercase;
+    margin: 20px 0;
 }
 
-main .form .form-container {
-    display: block;
+section.container .testimonials {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
     width: 100%;
+    gap: 2em;
+    margin: 30px 0;
 }
 
-#input-name, #input-email, #input-phone, #select-subject, #input-message {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    box-sizing: border-box;
-}
-
-form label {
-    font-weight: 600;
-}
-
-.btn button {
-    background-color: #fd4e2f;
-    color: whitesmoke;
-    float: right;
-    border: none;
-    padding: 10px;
+section.container .testimonials .testimonial {
     border-radius: 10px;
-    cursor: pointer;
+    box-shadow: 0 0 20px #d5d5d5;
+    padding: 10px;
+    width: 25%;
+    display: flex;
+    flex-direction: column; /* Menjadikan .testimonial sebagai flex container dengan arah kolom */
+    justify-content: space-between;
+}
+
+section.container .testimonials .testimonial .image {
+    overflow: hidden;
+}
+
+section.container .testimonials .testimonial .image img {
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
     transition: .3s;
 }
 
-.btn button:hover {
-    background-color: whitesmoke;
-    color: #fd4e2f;
+section.container .testimonials .testimonial img:hover {
+    transform: scale(1.2);
 }
 
-.btn button:disabled {
-    background-color: grey;
-    color: whitesmoke;
-    cursor: default;
+section.container .testimonials .testimonial p.quote {
+    text-align: justify;
+    font-style: italic;
+}
+
+section.container .testimonials .testimonial .description {
+    display: flex;
+    gap: 1em;
+}
+
+section.container .testimonials .testimonial .description > img {
+    width: 60px;
+    height: 60px;
+    align-self: center;
+    border-radius: 10px;
+}
+
+section.container .testimonials .testimonial .description .person .name {
+    font-weight: bold;
+}
+
+section.container .testimonials .testimonial .description .person a {
+    color: #fd4e2f;
+    text-decoration: none;
 }
 
 @media screen and (max-width: 900px) {
-    main .form {
-        width: 80%;
+    .hide-item {
+        display: none;
     }
 
     #barsmenu {
         display: flex;
     }
 
-    .hide-item {
-        display: none;
+    section.container .testimonials {
+        gap: 1em;
+    }
+
+    section.container .testimonials .testimonial {
+        width: 42%;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    section.container .testimonials .testimonial {
+        width: 90%;
     }
 }

@@ -22,12 +22,25 @@ nav {
 }
 
 .left-side ul li {
-    margin-right: 50px;
+    margin-right: 30px;
 }
 
 .left-side ul li a {
     text-decoration: none;
     color: black;
+    transition: .2s;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.left-side ul li a:hover {
+    background-color: #fd4e2f;
+    color: white;
+}
+
+.left-side ul li a.active-page {
+    color: white;
+    background-color: #fd4e2f;
 }
 
 .left-side ul li img {

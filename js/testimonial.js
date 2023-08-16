@@ -33,7 +33,7 @@ class Testimonial {
                     <div class="person">
                         <span class="name">${this.author}</span><br>
                         <span class="job">${this.jobAuthor}</span><br>
-                        <a href="https://linkedin.com/${this.linkedinId}/"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+                        <a href="https://linkedin.com/in/${this.linkedinId}/"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
                     </div>
                 </div>
             </div>

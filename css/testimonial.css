@@ -118,6 +118,34 @@ section.container > h1 {
     margin: 20px 0;
 }
 
+section.container .rating-container {
+    width: 30%;
+    margin: auto;
+}
+
+section.container .rating-container h2 {
+    text-align: center;
+}
+
+section.container .rating-container .rating-option {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+section.container .rating-container .rating-option .rating-btn {
+    background-color: white;
+    color: black;
+    padding: 5px 8px;
+    width: 50px;
+    border-radius: 10px;
+}
+
+section.container .rating-container .rating-option .rating-btn.active {
+    background-color: #fd4e2f;
+    color: white;
+}
+
 section.container .testimonials {
     display: flex;
     justify-content: center;
@@ -139,6 +167,19 @@ section.container .testimonials .testimonial {
 
 section.container .testimonials .testimonial .image {
     overflow: hidden;
+    position: relative;
+}
+
+section.container .testimonials .testimonial .image .rating {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #fd4e2f;
+    color: white;
+    padding: 3px 10px;
+    margin: 10px;
+    font-size: .8em;
+    border-radius: 5px;
 }
 
 section.container .testimonials .testimonial .image img {
@@ -148,7 +189,7 @@ section.container .testimonials .testimonial .image img {
     transition: .3s;
 }
 
-section.container .testimonials .testimonial img:hover {
+section.container .testimonials .testimonial .image img:hover {
     transform: scale(1.2);
 }
 
@@ -198,6 +239,9 @@ section.container .testimonials .testimonial .description .person a {
 
 @media screen and (max-width: 550px) {
     section.container .testimonials .testimonial {
+        width: 90%;
+    }
+    section.container .rating-container {
         width: 90%;
     }
 }

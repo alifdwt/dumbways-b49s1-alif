@@ -47,7 +47,15 @@ app.get("/contact", (req, res) => {
 });
 
 app.get("/blog-content/:id", (req, res) => {
-  res.render("blog-content");
+  const id = req.params.id;
+  const data = {
+    id,
+    title: "Kenali Ponsel Kentang Sejak Dini",
+    content:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi beatae doloribus tempora dolore, veritatis laudantium quos quae totam libero hic nesciunt vero tenetur sint voluptas similique enim accusantium. Libero repellendus perspiciatis incidunt ipsum, quae, officia odit laborum ab aut ducimus eligendi deleniti sequi doloremque repellat eos facilis facere aliquid. Incidunt recusandae fugiat quas. Quisquam minus similique tempore, illo beatae rem sapiente? Adipisci rerum fugiat tempora corporis maiores! Architecto delectus perspiciatis quos tempore quisquam. Asperiores nulla repudiandae ad sint distinctio iste libero ipsa assumenda, illo iure rerum a id maxime nisi nemo tempore tempora, quisquam ullam, eveniet fugiat. Doloribus magni earum quasi impedit exercitationem possimus sunt, veritatis accusamus excepturi corrupti unde, omnis ullam enim voluptas est, saepe iste! Corporis consectetur nostrum nulla aut distinctio impedit! Ut perferendis repudiandae architecto culpa repellendus! Minima quia, quo dolor quam reprehenderit sint sit ullam nulla dolorem sequi molestias accusamus excepturi, consequatur dolorum? Qui ipsa distinctio veritatis vero est eaque dolore animi explicabo possimus deserunt, ratione aut delectus, at modi ab illum pariatur sint vitae? Quia, repellendus quo. Velit fugiat dolorum quibusdam eius fugit architecto excepturi officiis pariatur, aut nulla esse ipsum, nisi voluptatum non necessitatibus quas tempore! Laborum eaque perspiciatis et sed autem fugiat commodi?",
+  };
+
+  res.render("blog-content", { data });
 });
 
 app.listen(PORT, () => {

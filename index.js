@@ -7,7 +7,7 @@ app.set("view engine", "hbs");
 app.set("views", path.join(__dirname, "src/views"));
 
 // Asset Files
-app.use(express.static("src/assets"));
+app.use(express.static(path.join(__dirname, "src/assets")));
 app.use(express.urlencoded({ extended: false }));
 
 app.get("/", (req, res) => {

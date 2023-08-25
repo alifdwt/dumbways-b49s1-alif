@@ -55,7 +55,7 @@
     <!-- End Nav -->
     <main class="mt-4">
       <section class="content container">
-        <h1 class="fw-bold text-center">{{data.title}}</h1>
+        <h1 class="fw-bold text-center">{{data.projectName}}</h1>
         <div class="row my-4 p-2 bg-danger-subtle">
           <img
             class="col-12 col-lg-6"
@@ -67,28 +67,43 @@
             <h2>Duration</h2>
             <p>
               <i class="fa-regular fa-calendar-days"></i>
-              08 Juni 2023 - 10 August 2023
+              {{data.startDate}}
+              -
+              {{data.endDate}}
             </p>
             <p><i class="fa-solid fa-clock"></i> 2 months</p>
             <h2>Technologies</h2>
             <table class="mb-3">
               <tr>
-                <td class="pe-4"><i class="fa-brands fa-react"></i> ReactJS</td>
-                <td><i class="fa-brands fa-square-js"></i> JavaScript</td>
+                {{#if data.inputReactjs}}
+                  <td class="pe-4"><i class="fa-brands fa-react"></i>
+                    ReactJS</td>
+                {{else}}
+                {{/if}}
+                {{#if data.inputNextjs}}
+                  <td><i class="fa-brands fa-square-js"></i> NextJS</td>
+                {{else}}
+                {{/if}}
               </tr>
               <tr>
-                <td><i class="fa-brands fa-node-js"></i> NodeJS</td>
-                <td><i class="fa-brands fa-html5"></i> HTML</td>
+                {{#if data.inputNodejs}}
+                  <td><i class="fa-brands fa-node-js"></i> NodeJS</td>
+                {{else}}
+                {{/if}}
+                {{#if data.inputTypescript}}
+                  <td><i class="fa-solid fa-keyboard"></i> TypeScript</td>
+                {{else}}
+                {{/if}}
               </tr>
             </table>
             <h2>Author</h2>
-            <p>Alif Dewantara</p>
+            <p>{{data.authorName}}</p>
             <h2>Published</h2>
-            <p>24 August 2023</p>
+            <p>{{data.postedAt}}</p>
           </div>
         </div>
         <div class="blog-content">
-          <p>{{data.content}}</p>
+          <p>{{data.description}}</p>
         </div>
       </section>
     </main>

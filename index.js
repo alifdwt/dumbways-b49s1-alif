@@ -10,8 +10,37 @@ app.set("views", path.join(__dirname, "src/views"));
 app.use(express.static(path.join(__dirname, "src/assets")));
 app.use(express.urlencoded({ extended: false }));
 
+const contentBlog = [
+  {
+    projectName: "Membuat Situs Web Dinamis Menggunakan Microsoft Excel",
+    authorName: "Alif Dewantara",
+    postedAt: getFullTime(new Date()),
+    startDate: "2023-06-08",
+    endDate: "2023-08-08",
+    description:
+      "Saat ini, membangun situs web dinamis tampaknya menjadi hal yang kompleks, membutuhkan pemahaman mendalam tentang bahasa pemrograman dan platform pengembangan web yang berbeda. Namun, apa yang mungkin Anda tidak ketahui adalah bahwa Anda bisa membuat situs web dinamis dengan menggunakan Microsoft Excel. Ya, Anda tidak salah baca! Excel, yang biasanya digunakan untuk pekerjaan spreadsheet, dapat digunakan untuk membuat situs web yang menakjubkan dan interaktif. Mari kita jelajahi cara melakukan ini.",
+    inputNodejs: "on",
+    inputReactjs: "on",
+    inputNextjs: "on",
+    inputTypescript: "on",
+  },
+  {
+    projectName: "Membangun Situs Streaming Film dengan Fortran",
+    authorName: "Alif Dewantara",
+    postedAt: getFullTime(new Date()),
+    startDate: "2023-07-01",
+    endDate: "2023-08-20",
+    description:
+      "Fortran, yang sering dianggap sebagai bahasa pemrograman 'kuno', mungkin bukan yang pertama kali terlintas dalam pikiran Anda saat berpikir tentang membangun situs streaming film. Namun, dengan perkembangan teknologi dan perangkat lunak, Fortran tetap menjadi bahasa pemrograman yang sangat kuat dan dapat digunakan untuk mencapai hal-hal yang mungkin tidak Anda duga. Dalam artikel ini, kami akan membahas bagaimana Anda dapat menggunakan Fortran untuk membangun situs streaming film yang dapat bersaing dengan platform modern lainnya.",
+    inputNodejs: "on",
+    inputReactjs: "",
+    inputNextjs: "on",
+    inputTypescript: "",
+  },
+];
+
 app.get("/", (req, res) => {
-  res.render("index");
+  res.render("index", { contentBlog });
 });
 
 app.get("/form-blog", (req, res) => {
@@ -21,6 +50,7 @@ app.get("/form-blog", (req, res) => {
 app.post("/form-blog", (req, res) => {
   const {
     projectName,
+    authorName,
     startDate,
     endDate,
     description,
@@ -30,17 +60,87 @@ app.post("/form-blog", (req, res) => {
     inputTypescript,
   } = req.body;
 
-  console.log("Project Name: ", projectName);
-  console.log("Start Date: ", startDate);
-  console.log("End Date: ", endDate);
-  console.log("Description: ", description);
-  console.log("Node JS: ", inputNodejs);
-  console.log("React JS: ", inputReactjs);
-  console.log("Next JS: ", inputNextjs);
-  console.log("TypeScript: ", inputTypescript);
+  const durasi = getDurasi(startDate, endDate);
 
+  const content = {
+    projectName,
+    authorName,
+    postedAt: getFullTime(new Date()),
+    startDate,
+    endDate,
+    description,
+    inputNodejs,
+    inputReactjs,
+    inputNextjs,
+    inputTypescript,
+    durasi,
+  };
+  // console.log("Project Name: ", projectName);
+  // console.log("Start Date: ", startDate);
+  // console.log("End Date: ", endDate);
+  // console.log("Description: ", description);
+  // console.log("Node JS: ", inputNodejs);
+  // console.log("React JS: ", inputReactjs);
+  // console.log("Next JS: ", inputNextjs);
+  // console.log("TypeScript: ", inputTypescript);
+
+  contentBlog.push(content);
   res.redirect("/");
 });
+contentBlog.forEach((blog) => {
+  blog.durasi = getDurasi(blog.startDate, blog.endDate);
+});
+function getDurasi(startDate, endDate) {
+  const start = new Date(startDate);
+  const end = new Date(endDate);
+  const timeDifference = end - start;
+  const durationInDays = Math.floor(timeDifference / (1000 * 3600 * 24));
+  let daysInMonth = 30;
+  let monthsInYear = 12;
+  let durasiMonth = Math.floor(durationInDays / daysInMonth);
+  let durasiYear = Math.floor(durationInDays / (daysInMonth * monthsInYear));
+
+  if (durasiYear > 0) {
+    return `Durasi: ${durasiYear} tahun`;
+  } else if (durasiMonth > 0) {
+    return `Durasi: ${durasiMonth} bulan`;
+  } else if (durationInDays > 0) {
+    return `Durasi: ${durationInDays} hari`;
+  } else {
+    return "";
+  }
+  // return durationInDays;
+}
+function getFullTime(time) {
+  let monthName = [
+    "January",
+    "February",
+    "March",
+    "Apr",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+
+  let date = time.getDate();
+  let monthIndex = time.getMonth();
+  let year = time.getFullYear();
+  let hours = time.getHours();
+  let minutes = time.getMinutes();
+
+  if (hours <= 9) {
+    hours = "0" + hours;
+  } else if (minutes <= 9) {
+    minutes = "0" + minutes;
+  }
+
+  return `${date} ${monthName[monthIndex]} ${year} ${hours}:${minutes} WIB`;
+}
 
 app.get("/contact", (req, res) => {
   res.render("contact");
@@ -48,16 +148,17 @@ app.get("/contact", (req, res) => {
 
 app.get("/blog-content/:id", (req, res) => {
   const id = req.params.id;
-  const data = {
-    id,
-    title: "Kenali Ponsel Kentang Sejak Dini",
-    content:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi beatae doloribus tempora dolore, veritatis laudantium quos quae totam libero hic nesciunt vero tenetur sint voluptas similique enim accusantium. Libero repellendus perspiciatis incidunt ipsum, quae, officia odit laborum ab aut ducimus eligendi deleniti sequi doloremque repellat eos facilis facere aliquid. Incidunt recusandae fugiat quas. Quisquam minus similique tempore, illo beatae rem sapiente? Adipisci rerum fugiat tempora corporis maiores! Architecto delectus perspiciatis quos tempore quisquam. Asperiores nulla repudiandae ad sint distinctio iste libero ipsa assumenda, illo iure rerum a id maxime nisi nemo tempore tempora, quisquam ullam, eveniet fugiat. Doloribus magni earum quasi impedit exercitationem possimus sunt, veritatis accusamus excepturi corrupti unde, omnis ullam enim voluptas est, saepe iste! Corporis consectetur nostrum nulla aut distinctio impedit! Ut perferendis repudiandae architecto culpa repellendus! Minima quia, quo dolor quam reprehenderit sint sit ullam nulla dolorem sequi molestias accusamus excepturi, consequatur dolorum? Qui ipsa distinctio veritatis vero est eaque dolore animi explicabo possimus deserunt, ratione aut delectus, at modi ab illum pariatur sint vitae? Quia, repellendus quo. Velit fugiat dolorum quibusdam eius fugit architecto excepturi officiis pariatur, aut nulla esse ipsum, nisi voluptatum non necessitatibus quas tempore! Laborum eaque perspiciatis et sed autem fugiat commodi?",
-  };
 
-  res.render("blog-content", { data });
+  res.render("blog-content", { data: contentBlog[id] });
 });
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
+
+// console.log(contentBlog);
+// contentBlog.forEach((blog) => {
+//   blog.durasi =
+//     (new Date(blog.endDate).getTime() - new Date(blog.startDate).getTime()) /
+//     86400000;
+// });

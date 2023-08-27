@@ -19,6 +19,16 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    {{!-- <style>
+      .blog-card {
+        width: 450px;
+      }
+      @media screen and (max-width: 576px) {
+        .blog-card {
+          width: 100%;
+        }
+      }
+    </style> --}}
   </head>
   <body class="bg-dark">
     <!-- Navbar -->
@@ -153,7 +163,8 @@
             Add Project
           </a>
         </p>
-        <div class="row row-cols-1 row-cols-md-3 g-4 p-3">
+        {{!-- <div class="d-flex flex-wrap-reverse flex-row-reverse justify-content-center gap-2"> --}}
+        <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 d-flex flex-wrap-reverse flex-row-reverse justify-content-center g-4 p-3">
           {{#each contentBlog}}
             <div class="col">
               <div class="card h-100">

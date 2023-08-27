@@ -40,6 +40,51 @@ const contentBlog = [
     inputJavascript: "",
     inputImg: "https://www.matecdev.com/img/Fortran_code_logo.png",
   },
+  {
+    projectName: "Jual Beli Daring dengan fitur Cash On Delivery",
+    authorName: "Alif Dewantara",
+    postedAt: getFullTime(new Date()),
+    startDate: "2022-07-01",
+    endDate: "2023-08-20",
+    description:
+      "Dalam era digital saat ini, jual beli daring telah menjadi cara yang sangat populer untuk berbelanja. Namun, ada saat-saat ketika konsumen masih merasa lebih nyaman dengan metode pembayaran tradisional seperti 'Cash On Delivery' (COD), di mana pembayaran dilakukan saat barang tiba di tangan mereka. Bagi penjual daring, menawarkan opsi pembayaran COD dapat meningkatkan kepercayaan konsumen dan meningkatkan penjualan. Pilihan COD dapat membantu Anda menarik lebih banyak konsumen, terutama di pasar di mana pembayaran daring mungkin masih kurang umum. Selalu pastikan untuk memberikan layanan yang baik kepada pelanggan Anda, terlepas dari metode pembayaran yang mereka pilih.",
+    inputNodejs: "on",
+    inputReactjs: "on",
+    inputVuejs: "",
+    inputJavascript: "on",
+    inputImg:
+      "https://assets.digination.id/crop/0x0:0x0/x/photo/2018/10/10/97767959.jpg",
+  },
+  {
+    projectName: "Situs Edukasi Teknologi Budidaya Rumput Ternak",
+    authorName: "Alif Dewantara",
+    postedAt: getFullTime(new Date()),
+    startDate: "2022-07-01",
+    endDate: "2023-01-20",
+    description:
+      "Teknologi terus berperan penting dalam sektor pertanian dan peternakan. Salah satu aspek yang semakin mendapat perhatian adalah budidaya rumput ternak yang efisien. Untuk mendukung perkembangan ini, situs edukasi teknologi budidaya rumput ternak dapat menjadi sumber daya berharga bagi peternak dan petani. Situs edukasi tentang budidaya rumput ternak adalah sumber daya penting untuk meningkatkan produksi ternak dan keberlanjutan sektor pertanian. Mendorong petani dan peternak untuk mengakses pengetahuan ini dapat berdampak positif pada hasil produksi dan kesejahteraan peternakan.",
+    inputNodejs: "on",
+    inputReactjs: "",
+    inputVuejs: "on",
+    inputJavascript: "on",
+    inputImg:
+      "https://www.algardata.com/wp-content/uploads/2021/10/Agrotech-transformacao-digital-na-agricultura-hero-1920x1080.jpg",
+  },
+  {
+    projectName: "DebtPay, Aplikasi Pelunas Hutang",
+    authorName: "Alif Dewantara",
+    postedAt: getFullTime(new Date()),
+    startDate: "2022-07-01",
+    endDate: "2023-01-20",
+    description:
+      "Hidup di era digital memberikan kita akses ke berbagai alat yang dapat membantu mengatur keuangan pribadi dengan lebih efisien. Salah satu tantangan finansial yang banyak orang hadapi adalah manajemen hutang. Bagi yang ingin merencanakan pelunasan hutang secara lebih terstruktur dan efektif, ada aplikasi pelunas hutang yang dapat memberikan bantuan berharga. Dalam artikel ini, kita akan menjelajahi aplikasi-aplikasi ini dan bagaimana mereka dapat membantu Anda mengatasi hutang dengan lebih baik.",
+    inputNodejs: "on",
+    inputReactjs: "on",
+    inputVuejs: "on",
+    inputJavascript: "on",
+    inputImg:
+      "https://debtline.co.za/wp-content/uploads/2021/06/what-is-debt-review.webp",
+  },
 ];
 
 app.get("/", (req, res) => {

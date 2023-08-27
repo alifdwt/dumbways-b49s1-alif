@@ -167,7 +167,7 @@ contentBlog.forEach((blog, index) => {
   blog.durasi = getDurasi(blog.startDate, blog.endDate);
   blog.ids = index;
 });
-console.log(contentBlog);
+// console.log(contentBlog);
 function getDurasi(startDate, endDate) {
   const start = new Date(startDate);
   const end = new Date(endDate);
@@ -190,32 +190,9 @@ function getDurasi(startDate, endDate) {
 }
 
 function getFullTime(time) {
-  let monthName = [
-    "January",
-    "February",
-    "March",
-    "Apr",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
-
-  let date = time.getDate();
-  let monthIndex = time.getMonth();
-  let year = time.getFullYear();
-  let hours = time.getHours();
-  let minutes = time.getMinutes();
-
-  if (hours <= 9) {
-    hours = "0" + hours;
-  } else if (minutes <= 9) {
-    minutes = "0" + minutes;
-  }
-
-  return `${date} ${monthName[monthIndex]} ${year} ${hours}:${minutes} WIB`;
+  return new Intl.DateTimeFormat("en-GB", {
+    dateStyle: "long",
+    timeStyle: "short",
+    timeZone: "Asia/Jakarta",
+  }).format(time);
 }

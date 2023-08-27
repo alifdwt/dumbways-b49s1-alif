@@ -21,8 +21,10 @@ const contentBlog = [
       "Saat ini, membangun situs web dinamis tampaknya menjadi hal yang kompleks, membutuhkan pemahaman mendalam tentang bahasa pemrograman dan platform pengembangan web yang berbeda. Namun, apa yang mungkin Anda tidak ketahui adalah bahwa Anda bisa membuat situs web dinamis dengan menggunakan Microsoft Excel. Ya, Anda tidak salah baca! Excel, yang biasanya digunakan untuk pekerjaan spreadsheet, dapat digunakan untuk membuat situs web yang menakjubkan dan interaktif. Mari kita jelajahi cara melakukan ini.",
     inputNodejs: "on",
     inputReactjs: "on",
-    inputNextjs: "on",
-    inputTypescript: "on",
+    inputVuejs: "on",
+    inputJavascript: "on",
+    inputImg:
+      "https://imgx.sonora.id/crop/0x0:0x0/x/photo/2022/11/22/exceljpg-20221122022008.jpg",
   },
   {
     projectName: "Membangun Situs Streaming Film dengan Fortran",
@@ -34,8 +36,9 @@ const contentBlog = [
       "Fortran, yang sering dianggap sebagai bahasa pemrograman 'kuno', mungkin bukan yang pertama kali terlintas dalam pikiran Anda saat berpikir tentang membangun situs streaming film. Namun, dengan perkembangan teknologi dan perangkat lunak, Fortran tetap menjadi bahasa pemrograman yang sangat kuat dan dapat digunakan untuk mencapai hal-hal yang mungkin tidak Anda duga. Dalam artikel ini, kami akan membahas bagaimana Anda dapat menggunakan Fortran untuk membangun situs streaming film yang dapat bersaing dengan platform modern lainnya.",
     inputNodejs: "on",
     inputReactjs: "",
-    inputNextjs: "on",
-    inputTypescript: "",
+    inputVuejs: "on",
+    inputJavascript: "",
+    inputImg: "https://www.matecdev.com/img/Fortran_code_logo.png",
   },
 ];
 
@@ -56,8 +59,8 @@ app.post("/form-blog", (req, res) => {
     description,
     inputNodejs,
     inputReactjs,
-    inputNextjs,
-    inputTypescript,
+    inputVuejs,
+    inputJavascript,
   } = req.body;
 
   const durasi = getDurasi(startDate, endDate);
@@ -71,8 +74,8 @@ app.post("/form-blog", (req, res) => {
     description,
     inputNodejs,
     inputReactjs,
-    inputNextjs,
-    inputTypescript,
+    inputVuejs,
+    inputJavascript,
     durasi,
   };
   // console.log("Project Name: ", projectName);
@@ -85,11 +88,86 @@ app.post("/form-blog", (req, res) => {
   // console.log("TypeScript: ", inputTypescript);
 
   contentBlog.push(content);
+  content.ids = contentBlog.length - 1;
+  // console.log(contentBlog);
   res.redirect("/");
 });
-contentBlog.forEach((blog) => {
-  blog.durasi = getDurasi(blog.startDate, blog.endDate);
+
+app.get("/edit-blog/:id", (req, res) => {
+  const id = req.params.id;
+
+  res.render("edit-blog", { data: contentBlog[id] });
 });
+
+app.post("/edit-blog/:id", (req, res) => {
+  // const id = req.params.id;
+  let editURL = req.originalUrl;
+  console.log(editURL);
+
+  const {
+    ids,
+    projectName,
+    authorName,
+    startDate,
+    endDate,
+    description,
+    inputNodejs,
+    inputReactjs,
+    inputVuejs,
+    inputJavascript,
+    inputImg,
+  } = req.body;
+
+  const durasi = getDurasi(startDate, endDate);
+
+  const content = {
+    ids,
+    projectName,
+    authorName,
+    postedAt: getFullTime(new Date()),
+    startDate,
+    endDate,
+    description,
+    inputNodejs,
+    inputReactjs,
+    inputVuejs,
+    inputJavascript,
+    inputImg,
+    durasi,
+  };
+  console.log(content);
+
+  contentBlog.splice(ids, 1, content);
+  res.redirect("/");
+});
+
+app.get("/contact", (req, res) => {
+  res.render("contact");
+});
+
+app.get("/blog-content/:id", (req, res) => {
+  const id = req.params.id;
+
+  res.render("blog-content", { data: contentBlog[id] });
+});
+
+app.get("/delete-blog/:id", (req, res) => {
+  const id = req.params.id;
+
+  contentBlog.splice(id, 1);
+  res.redirect("/");
+});
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
+
+// Functions
+contentBlog.forEach((blog, index) => {
+  blog.durasi = getDurasi(blog.startDate, blog.endDate);
+  blog.ids = index;
+});
+console.log(contentBlog);
 function getDurasi(startDate, endDate) {
   const start = new Date(startDate);
   const end = new Date(endDate);
@@ -109,8 +187,8 @@ function getDurasi(startDate, endDate) {
   } else {
     return "";
   }
-  // return durationInDays;
 }
+
 function getFullTime(time) {
   let monthName = [
     "January",
@@ -141,24 +219,3 @@ function getFullTime(time) {
 
   return `${date} ${monthName[monthIndex]} ${year} ${hours}:${minutes} WIB`;
 }
-
-app.get("/contact", (req, res) => {
-  res.render("contact");
-});
-
-app.get("/blog-content/:id", (req, res) => {
-  const id = req.params.id;
-
-  res.render("blog-content", { data: contentBlog[id] });
-});
-
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
-
-// console.log(contentBlog);
-// contentBlog.forEach((blog) => {
-//   blog.durasi =
-//     (new Date(blog.endDate).getTime() - new Date(blog.startDate).getTime()) /
-//     86400000;
-// });

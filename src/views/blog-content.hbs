@@ -58,10 +58,10 @@
         <h1 class="fw-bold text-center">{{data.projectName}}</h1>
         <div class="row my-4 p-2 bg-danger-subtle">
           <img
-            class="col-12 col-lg-6"
-            src="/images/Android-main.jpg"
-            alt=""
-            width="100%"
+            class="col-12 col-lg-6 img-fluid object-fit-cover"
+            src="{{#if data.inputImg}}{{data.inputImg}}{{else}}/images/Placeholder_view_vector.svg.png{{/if}}"
+            alt="thumb-img"
+            style="height: 375px;"
           />
           <div class="col-12 col-lg-6 banner-desc">
             <h2>Duration</h2>
@@ -75,23 +75,25 @@
             <h2>Technologies</h2>
             <table class="mb-3">
               <tr>
-                {{#if data.inputReactjs}}
-                  <td class="pe-4"><i class="fa-brands fa-react"></i>
-                    ReactJS</td>
+                {{#if data.inputNodejs}}
+                  <td class="pe-4"><i
+                      class="fa-brands fa-node-js fs-4 me-2"
+                    ></i>
+                    Node JS</td>
                 {{else}}
                 {{/if}}
-                {{#if data.inputNextjs}}
-                  <td><i class="fa-brands fa-square-js"></i> NextJS</td>
+                {{#if data.inputReactjs}}
+                  <td><i class="fa-brands fa-react fs-4 me-2"></i> React JS</td>
                 {{else}}
                 {{/if}}
               </tr>
               <tr>
-                {{#if data.inputNodejs}}
-                  <td><i class="fa-brands fa-node-js"></i> NodeJS</td>
+                {{#if data.inputVuejs}}
+                  <td><i class="fa-brands fa-vuejs fs-4 me-2"></i> Vue JS</td>
                 {{else}}
                 {{/if}}
-                {{#if data.inputTypescript}}
-                  <td><i class="fa-solid fa-keyboard"></i> TypeScript</td>
+                {{#if data.inputJavascript}}
+                  <td><i class="fa-brands fa-js fs-4 me-2"></i> JavaScript</td>
                 {{else}}
                 {{/if}}
               </tr>

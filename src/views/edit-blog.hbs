@@ -2,9 +2,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>
-      Add Project - Alif Dewantara
-    </title>
+    <title>Edit Project - Alif Dewantara</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -33,23 +31,21 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item me-3">
-              <a class="nav-link" href="/">
-                Home
-              </a>
+              <a class="nav-link" href="/">Home</a>
             </li>
             <li class="nav-item me-3">
-              <a class="nav-link active" aria-current="page" href="/form-blog">
-                Add Project
-              </a>
+              <a
+                class="nav-link active"
+                aria-current="page"
+                href="/form-blog"
+              >Add Project</a>
             </li>
             <!-- <li class="nav-item me-3">
               <a class="nav-link" href="#">My Testimonial</a>
             </li> -->
           </ul>
           <!-- <button type="button" class="btn btn-warning">Contact Me</button> -->
-          <a class="btn btn-warning" href="/contact">
-            Contact Me
-          </a>
+          <a class="btn btn-warning" href="/contact">Contact Me</a>
         </div>
       </div>
     </nav>
@@ -57,69 +53,59 @@
     <main>
       <!-- BLOG FORM -->
       <section class="container my-4 p-4 card">
-        <h1 class="text-center">
-          ADD MY PROJECT
-        </h1>
-        <form class="row g-2" method="post" action="form-blog">
+        <h1 class="text-center">EDIT MY PROJECT</h1>
+        <form class="row g-2" method="post" action="edit-blog">
           <div class="col-12">
-            <label for="projectName" class="form-label">
-              Project Name
-            </label>
+            <label for="projectName" class="form-label">Project Name</label>
             <input
               type="text"
               name="projectName"
               class="form-control"
               id="projectName"
+              value="{{data.projectName}}"
             />
           </div>
           <div class="col-12">
-            <label for="authorName" class="form-label">
-              Author
-            </label>
+            <label for="authorName" class="form-label">Author</label>
             <input
               type="text"
               name="authorName"
               class="form-control"
               id="authorName"
+              value="{{data.authorName}}"
             />
           </div>
           <div class="col-md-6">
-            <label for="startDate" class="form-label">
-              Start Date
-            </label>
+            <label for="startDate" class="form-label">Start Date</label>
             <input
               type="date"
               name="startDate"
               class="form-control"
               id="startDate"
+              value="{{data.startDate}}"
             />
           </div>
           <div class="col-md-6">
-            <label for="endDate" class="form-label">
-              End Date
-            </label>
+            <label for="endDate" class="form-label">End Date</label>
             <input
               type="date"
               name="endDate"
               class="form-control"
               id="endDate"
+              value="{{data.endDate}}"
             />
           </div>
           <div class="col-12">
-            <label for="description" class="form-label">
-              Description
-            </label>
+            <label for="description" class="form-label">Description</label>
             <textarea
               name="description"
               id="description"
               rows="10"
               class="form-control"
-            ></textarea>
+            >{{data.description}}</textarea>
           </div>
           <div class="col-12">
-            <label for="technologies">
-              Technologies
-            </label>
+            <label for="technologies">Technologies</label>
           </div>
           <div class="col-md-6">
             <div class="form-check">
@@ -128,10 +114,10 @@
                 type="checkbox"
                 name="inputNodejs"
                 id="input-nodejs"
+                {{#if data.inputNodejs}} checked {{/if}}
               />
               <label class="form-check-label" for="input-nodejs">
-                Node JS
-              </label>
+                Node JS</label>
             </div>
             <div class="form-check">
               <input
@@ -139,10 +125,10 @@
                 type="checkbox"
                 name="inputReactjs"
                 id="input-reactjs"
+                {{#if data.inputReactjs}} checked {{/if}}
               />
               <label class="form-check-label" for="input-reactjs">
-                React JS
-              </label>
+                React JS</label>
             </div>
           </div>
           <div class="col-md-6">
@@ -152,10 +138,9 @@
                 type="checkbox"
                 name="inputVuejs"
                 id="input-vuejs"
+                {{#if data.inputVuejs}} checked {{/if}}
               />
-              <label class="form-check-label" for="input-vuejs">
-                Vue JS
-              </label>
+              <label class="form-check-label" for="input-vuejs"> Vue JS</label>
             </div>
             <div class="form-check">
               <input
@@ -163,27 +148,22 @@
                 type="checkbox"
                 name="inputJavascript"
                 id="input-javascript"
+                {{#if data.inputJavascript}} checked {{/if}}
               />
               <label class="form-check-label" for="input-javascript">
-                JavaScript
-              </label>
+                JavaScript</label>
             </div>
           </div>
-          <div class="mb-3">
-            <label for="inputImg" class="form-label">
-              Default file input example
-            </label>
-            <input
-              class="form-control"
-              type="file"
-              id="inputImg"
-              name="inputImg"
-            />
+          <div class="col-11 mb-3">
+            <label for="formFile" class="form-label">Default file input example</label>
+            <input class="form-control" type="file" id="formFile" />
+          </div>
+          <div class="col-1 mb-3">
+            <label for="ids" class="form-label">Ids</label>
+            <input type="number" name="ids" class="form-control" id="ids" value="{{data.ids}}">
           </div>
           <div class="col-12 d-md-flex justify-content-md-end">
-            <button type="submit" class="btn btn-warning">
-              Submit
-            </button>
+            <button type="submit" class="btn btn-warning">Submit</button>
           </div>
         </form>
       </section>

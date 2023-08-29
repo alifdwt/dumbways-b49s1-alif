@@ -169,7 +169,7 @@
             <div class="col">
               <div class="card h-100">
                 <img
-                  src="{{#if inputImg}}{{this.inputImg}}{{else}}images/Placeholder_view_vector.svg.png{{/if}}"
+                  src="{{#if input_img}}{{this.input_img}}{{else}}images/Placeholder_view_vector.svg.png{{/if}}"
                   class="card-img-top img-thumbnail img-fluid object-fit-cover"
                   alt="thumb-img"
                   style="height: 300px"
@@ -180,12 +180,12 @@
                       class="text-decoration-none"
                       href="/blog-content/{{@index}}"
                     >
-                      {{this.projectName}}
+                      {{this.project_name}}
                     </a>
                   </h5>
                   <span class="text-body-tertiary">
                     Author:
-                    {{this.authorName}}
+                    {{this.author_name}}
                     |
                     {{this.durasi}}
                   </span>
@@ -193,10 +193,8 @@
                     {{this.description}}
                   </p>
                   <div class="techstack">
-                    {{#if this.inputNodejs}}
+                    {{#if this.technologies}}
                       <i class="fa-brands fa-node-js fs-4 me-2"></i>
-                    {{else}}
-
                     {{/if}}
                     {{#if this.inputReactjs}}
                       <i class="fa-brands fa-react fs-4 me-2"></i>

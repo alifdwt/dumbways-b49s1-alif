@@ -55,11 +55,11 @@
     <!-- End Nav -->
     <main class="mt-4">
       <section class="content container">
-        <h1 class="fw-bold text-center">{{data.projectName}}</h1>
+        <h1 class="fw-bold text-center">{{data.project_name}}</h1>
         <div class="row my-4 p-2 bg-danger-subtle">
           <img
             class="col-12 col-lg-6 img-fluid object-fit-cover"
-            src="{{#if data.inputImg}}{{data.inputImg}}{{else}}/images/Placeholder_view_vector.svg.png{{/if}}"
+            src="{{#if data.input_img}}{{data.input_img}}{{else}}/images/Placeholder_view_vector.svg.png{{/if}}"
             alt="thumb-img"
             style="height: 375px;"
           />
@@ -67,55 +67,19 @@
             <h2>Duration</h2>
             <p>
               <i class="fa-regular fa-calendar-days"></i>
-              {{data.startDate}}
+              {{data.start_date}}
               -
-              {{data.endDate}}
+              {{data.end_date}}
             </p>
             <p><i class="fa-solid fa-clock"></i> 2 months</p>
             <h2>Technologies</h2>
             <div class="d-flex">
-              {{#if data.inputNodejs}}
-              <p class="me-2"><i class="fa-brands fa-node-js fs-4"></i> Node JS</p>
-              {{/if}}
-              {{#if data.inputReactjs}}
-              <p class="me-2"><i class="fa-brands fa-react fs-4"></i> React JS</p>
-              {{/if}}
-              {{#if data.inputVuejs}}
-              <p class="me-2"><i class="fa-brands fa-vuejs fs-4"></i> Vue JS</p>
-              {{/if}}
-              {{#if data.inputJavascript}}
-              <p class="me-2"><i class="fa-brands fa-js fs-4"></i> JavaScript</p>
-              {{/if}}
+              {{data.technologies}}
             </div>
-            {{!-- <table class="mb-3">
-              <tr>
-                {{#if data.inputNodejs}}
-                  <td class="pe-4"><i
-                      class="fa-brands fa-node-js fs-4 me-2"
-                    ></i>
-                    Node JS</td>
-                {{else}}
-                {{/if}}
-                {{#if data.inputReactjs}}
-                  <td><i class="fa-brands fa-react fs-4 me-2"></i> React JS</td>
-                {{else}}
-                {{/if}}
-              </tr>
-              <tr>
-                {{#if data.inputVuejs}}
-                  <td><i class="fa-brands fa-vuejs fs-4 me-2"></i> Vue JS</td>
-                {{else}}
-                {{/if}}
-                {{#if data.inputJavascript}}
-                  <td><i class="fa-brands fa-js fs-4 me-2"></i> JavaScript</td>
-                {{else}}
-                {{/if}}
-              </tr>
-            </table> --}}
             <h2>Author</h2>
-            <p>{{data.authorName}}</p>
+            <p>{{data.author_name}}</p>
             <h2>Published</h2>
-            <p>{{data.postedAt}}</p>
+            <p>{{data.createdAt}}</p>
           </div>
         </div>
         <div class="blog-content">

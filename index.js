@@ -94,7 +94,7 @@ const contentBlog = [
 
 app.get("/", async (req, res) => {
   try {
-    const query = `SELECT id, ids, project_name, author_name, start_date, end_date, description, input_img, "createdAt" FROM content_blogs;`;
+    const query = `SELECT * FROM content_blogs;`;
     let obj = await sequelize.query(query, { type: QueryTypes.SELECT });
     const data = obj.map((res) => ({
       ...res,
@@ -103,119 +103,111 @@ app.get("/", async (req, res) => {
     console.log(data);
 
     res.render("index", { contentBlog: data });
-  } catch (error) {}
+  } catch (error) {
+    console.log(error);
+  }
 });
 
 app.get("/form-blog", (req, res) => {
   res.render("form-blog");
 });
 
-app.post("/form-blog", (req, res) => {
-  const {
-    projectName,
-    authorName,
-    startDate,
-    endDate,
-    description,
-    inputNodejs,
-    inputReactjs,
-    inputVuejs,
-    inputJavascript,
-  } = req.body;
+app.post("/form-blog", async (req, res) => {
+  try {
+    const {
+      projectName,
+      authorName,
+      startDate,
+      endDate,
+      description,
+      // inputNodejs,
+      // inputReactjs,
+      // inputVuejs,
+      // inputJavascript,
+      inputImg,
+    } = req.body;
 
-  const durasi = getDurasi(startDate, endDate);
+    const durasi = getDurasi(startDate, endDate);
+    await sequelize.query(
+      `INSERT INTO content_blogs(project_name, author_name, start_date, end_date, description, input_img, durasi, "createdAt", "updatedAt") VALUES ('${projectName}', '${authorName}', '${startDate}', '${endDate}', '${description}', '${inputImg}', '${durasi}', NOW(), NOW());`
+    );
 
-  const content = {
-    projectName,
-    authorName,
-    postedAt: getFullTime(new Date()),
-    startDate,
-    endDate,
-    description,
-    inputNodejs,
-    inputReactjs,
-    inputVuejs,
-    inputJavascript,
-    durasi,
-  };
-  // console.log("Project Name: ", projectName);
-  // console.log("Start Date: ", startDate);
-  // console.log("End Date: ", endDate);
-  // console.log("Description: ", description);
-  // console.log("Node JS: ", inputNodejs);
-  // console.log("React JS: ", inputReactjs);
-  // console.log("Next JS: ", inputNextjs);
-  // console.log("TypeScript: ", inputTypescript);
-
-  contentBlog.push(content);
-  content.ids = contentBlog.length - 1;
-  // console.log(contentBlog);
-  res.redirect("/");
+    res.redirect("/");
+  } catch (error) {
+    console.log(error);
+  }
 });
 
-app.get("/edit-blog/:id", (req, res) => {
-  const id = req.params.id;
+app.get("/edit-blog/:id", async (req, res) => {
+  try {
+    const id = req.params.id;
+    const query = `SELECT * FROM content_blogs WHERE id=${id}`;
 
-  res.render("edit-blog", { data: contentBlog[id] });
+    let obj = await sequelize.query(query, { type: QueryTypes.SELECT });
+    const data = obj.map((res) => ({
+      ...res,
+      tecnologies: ["nodejs", "reactjs"],
+    }));
+    res.render("edit-blog", { data: data[0] });
+  } catch (error) {
+    console.log(error);
+  }
 });
 
-app.post("/edit-blog/:id", (req, res) => {
-  // const id = req.params.id;
-  let editURL = req.originalUrl;
-  console.log(editURL);
+app.post("/edit-blog/:id", async (req, res) => {
+  try {
+    const {
+      ids,
+      projectName,
+      authorName,
+      startDate,
+      endDate,
+      description,
+      // inputNodejs,
+      // inputReactjs,
+      // inputVuejs,
+      // inputJavascript,
+      inputImg,
+    } = req.body;
 
-  const {
-    ids,
-    projectName,
-    authorName,
-    startDate,
-    endDate,
-    description,
-    inputNodejs,
-    inputReactjs,
-    inputVuejs,
-    inputJavascript,
-    inputImg,
-  } = req.body;
+    const durasi = getDurasi(startDate, endDate);
+    await sequelize.query(
+      `UPDATE content_blogs
+      SET project_name = '${projectName}', author_name = '${authorName}', start_date = '${startDate}', end_date = '${endDate}', description = '${description}', input_img = '${inputImg}, "updatedAt" = '${new Date()}'
+      WHERE id=${ids}`
+    );
 
-  const durasi = getDurasi(startDate, endDate);
-
-  const content = {
-    ids,
-    projectName,
-    authorName,
-    postedAt: getFullTime(new Date()),
-    startDate,
-    endDate,
-    description,
-    inputNodejs,
-    inputReactjs,
-    inputVuejs,
-    inputJavascript,
-    inputImg,
-    durasi,
-  };
-  console.log(content);
-
-  contentBlog.splice(ids, 1, content);
-  res.redirect("/");
+    res.redirect("/");
+  } catch (error) {
+    console.log(error);
+  }
 });
 
 app.get("/contact", (req, res) => {
   res.render("contact");
 });
 
-app.get("/blog-content/:id", (req, res) => {
+app.get("/blog-content/:id", async (req, res) => {
   const id = req.params.id;
+  const query = `SELECT * FROM content_blogs WHERE id=${id};`;
+  let obj = await sequelize.query(query, { type: QueryTypes.SELECT });
+  const data = obj.map((res) => ({
+    ...res,
+    tecnologies: ["nodejs", "reactjs"],
+  }));
 
-  res.render("blog-content", { data: contentBlog[id] });
+  res.render("blog-content", { data: data[0] });
 });
 
-app.get("/delete-blog/:id", (req, res) => {
-  const id = req.params.id;
+app.get("/delete-blog/:id", async (req, res) => {
+  try {
+    const id = req.params.id;
 
-  contentBlog.splice(id, 1);
-  res.redirect("/");
+    await sequelize.query(`DELETE FROM content_blogs WHERE id=${id}`);
+    res.redirect("/");
+  } catch (error) {
+    console.log(error);
+  }
 });
 
 app.listen(PORT, () => {
@@ -239,11 +231,11 @@ function getDurasi(startDate, endDate) {
   let durasiYear = Math.floor(durationInDays / (daysInMonth * monthsInYear));
 
   if (durasiYear > 0) {
-    return `Durasi: ${durasiYear} tahun`;
+    return `${durasiYear} tahun`;
   } else if (durasiMonth > 0) {
-    return `Durasi: ${durasiMonth} bulan`;
+    return `${durasiMonth} bulan`;
   } else if (durationInDays > 0) {
-    return `Durasi: ${durationInDays} hari`;
+    return `${durationInDays} hari`;
   } else {
     return "";
   }

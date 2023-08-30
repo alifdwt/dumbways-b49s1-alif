@@ -14,14 +14,14 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   content_blog.init({
-    ids: DataTypes.INTEGER,
     project_name: DataTypes.STRING,
     author_name: DataTypes.STRING,
     start_date: DataTypes.DATEONLY,
     end_date: DataTypes.DATEONLY,
     description: DataTypes.STRING,
     technologies: DataTypes.JSONB,
-    input_img: DataTypes.STRING
+    input_img: DataTypes.STRING,
+    durasi: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'content_blog',

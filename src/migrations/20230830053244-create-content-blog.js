@@ -9,9 +9,6 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      ids: {
-        type: Sequelize.INTEGER
-      },
       project_name: {
         type: Sequelize.STRING
       },
@@ -31,6 +28,9 @@ module.exports = {
         type: Sequelize.JSONB
       },
       input_img: {
+        type: Sequelize.STRING
+      },
+      durasi: {
         type: Sequelize.STRING
       },
       createdAt: {

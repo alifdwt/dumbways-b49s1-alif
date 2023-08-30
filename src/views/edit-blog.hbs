@@ -62,7 +62,7 @@
               name="projectName"
               class="form-control"
               id="projectName"
-              value="{{data.projectName}}"
+              value="{{data.project_name}}"
             />
           </div>
           <div class="col-12">
@@ -72,7 +72,7 @@
               name="authorName"
               class="form-control"
               id="authorName"
-              value="{{data.authorName}}"
+              value="{{data.author_name}}"
             />
           </div>
           <div class="col-md-6">
@@ -82,7 +82,7 @@
               name="startDate"
               class="form-control"
               id="startDate"
-              value="{{data.startDate}}"
+              value="{{data.start_date}}"
             />
           </div>
           <div class="col-md-6">
@@ -92,7 +92,7 @@
               name="endDate"
               class="form-control"
               id="endDate"
-              value="{{data.endDate}}"
+              value="{{data.end_date}}"
             />
           </div>
           <div class="col-12">
@@ -155,12 +155,12 @@
             </div>
           </div>
           <div class="col-11 mb-3">
-            <label for="formFile" class="form-label">Default file input example</label>
-            <input class="form-control" type="file" id="formFile" />
+            <label for="inputImg" class="form-label">Image</label>
+            <input class="form-control" type="text" id="inputImg" name="inputImg" placeholder="Insert Image URL Here" value="{{data.input_img}}"/>
           </div>
           <div class="col-1 mb-3">
             <label for="ids" class="form-label">Ids</label>
-            <input type="number" name="ids" class="form-control" id="ids" value="{{data.ids}}">
+            <input type="number" name="ids" class="form-control" id="ids" value="{{data.id}}">
           </div>
           <div class="col-12 d-md-flex justify-content-md-end">
             <button type="submit" class="btn btn-warning">Submit</button>

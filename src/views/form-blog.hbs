@@ -128,6 +128,7 @@
                 type="checkbox"
                 name="inputNodejs"
                 id="input-nodejs"
+                value="nodejs"
               />
               <label class="form-check-label" for="input-nodejs">
                 Node JS
@@ -139,6 +140,7 @@
                 type="checkbox"
                 name="inputReactjs"
                 id="input-reactjs"
+                value="reactjs"
               />
               <label class="form-check-label" for="input-reactjs">
                 React JS
@@ -152,6 +154,7 @@
                 type="checkbox"
                 name="inputVuejs"
                 id="input-vuejs"
+                value="vuejs"
               />
               <label class="form-check-label" for="input-vuejs">
                 Vue JS
@@ -163,13 +166,14 @@
                 type="checkbox"
                 name="inputJavascript"
                 id="input-javascript"
+                value="javascript"
               />
               <label class="form-check-label" for="input-javascript">
                 JavaScript
               </label>
             </div>
           </div>
-          <div class="mb-3">
+          {{! <div class="mb-3">
             <label for="inputImg" class="form-label">
               Default file input example
             </label>
@@ -178,6 +182,18 @@
               type="file"
               id="inputImg"
               name="inputImg"
+            />
+          </div> }}
+          <div class="mb-3">
+            <label for="inputImg" class="form-label">
+              Image
+            </label>
+            <input
+              class="form-control"
+              type="text"
+              id="inputImg"
+              name="inputImg"
+              placeholder="Insert image link here"
             />
           </div>
           <div class="col-12 d-md-flex justify-content-md-end">

@@ -19,16 +19,6 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    {{!-- <style>
-      .blog-card {
-        width: 450px;
-      }
-      @media screen and (max-width: 576px) {
-        .blog-card {
-          width: 100%;
-        }
-      }
-    </style> --}}
   </head>
   <body class="bg-dark">
     <!-- Navbar -->
@@ -82,19 +72,6 @@
                 Hi! Welcome to my hut
               </h1>
               <p style="text-align: justify">
-                <!-- I am a recent graduate of Universitas Padjadjaran with a
-                bachelor's degree in Historical Science, but my passion lies in
-                data analysis. Throughout my academic journey, I developed a
-                strong proficiency in data analysis techniques, which I later
-                honed through various certifications such as the IBM Data
-                Science Specialization and Google Data Analytics Specialization.
-                I'm skilled in using tools like SQL, R, Python, and Tableau to
-                extract actionable insights from complex datasets. My academic
-                background has equipped me with a unique perspective that
-                complements my data analysis skills, allowing me to approach
-                problems analytically and critically. I'm eager to apply my data
-                analysis expertise to real-world challenges and contribute
-                meaningful insights to any data-driven team or project.  -->
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
                 efficitur, massa ut finibus finibus, est erat egestas ligula, ac
                 pulvinar arcu mauris eget arcu. Vestibulum tempus nec eros eget
@@ -187,7 +164,7 @@
                     Author:
                     {{this.author_name}}
                     |
-                    {{this.durasi}}
+                    Durasi: {{this.durasi}}
                   </span>
                   <p class="card-text overflow-hidden" style="height: 15vh;">
                     {{this.description}}
@@ -200,9 +177,6 @@
                   class="card-footer d-flex justify-content-between align-items-center"
                 >
                   <small class="text-body-secondary">
-                    {{!-- {{#if this.createdAt < this.updatedAt}}
-                    {{this.updatedAt}}
-                    {{/if}} --}}
                     {{this.updatedAt}}
                   </small>
                   <div>
@@ -225,5 +199,17 @@
       integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
       crossorigin="anonymous"
     ></script>
+    <script>
+        const techStacks = document.querySelectorAll('.techstack');
+
+        techStacks.forEach(stack => {
+            const newText = stack.textContent.replace(/nodejs/g, '<i class="fa-brands fa-node-js fs-4 me-2"></i>')
+                                           .replace(/reactjs/g, '<i class="fa-brands fa-react fs-4 me-2"></i>')
+                                           .replace(/vuejs/g, '<i class="fa-brands fa-vuejs fs-4 me-2"></i>')
+                                           .replace(/javascript/g, '<i class="fa-brands fa-js fs-4 me-2"></i>')
+                                           .replace(/,/g, '');;
+            stack.innerHTML = newText;
+        });
+    </script>
   </body>
 </html>

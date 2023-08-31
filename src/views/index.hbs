@@ -45,16 +45,25 @@
                 Home
               </a>
             </li>
+            {{#if isLogin}}
             <li class="nav-item me-3">
               <a class="nav-link" href="/form-blog">
                 Add Project
               </a>
             </li>
+            {{/if}}
             <!-- <li class="nav-item me-3">
               <a class="nav-link" href="#">My Testimonial</a>
             </li> -->
           </ul>
           <!-- <button type="button" class="btn btn-warning">Contact Me</button> -->
+          {{#if isLogin}}
+          <a class="nav-link text-warning me-3" href="#">Hello, {{user}}</a>
+          <a class="nav-link me-3" href="/logout">Log out</a>
+          {{else}}
+          <a class="nav-link me-3" href="/register">Register</a>
+          <a class="nav-link me-3" href="/login">Log In</a>
+          {{/if}}
           <a class="btn btn-warning" href="/contact">
             Contact Me
           </a>
@@ -62,6 +71,11 @@
       </div>
     </nav>
     <!-- End Nav -->
+    {{#if messages.success}}
+    <div class="alert alert-success" role="alert">
+      {{messages.success}} Welcome, {{user}}!
+    </div>
+    {{/if}}
     <main>
       <!-- Introduction -->
       <section class="container">
@@ -135,11 +149,13 @@
         <h1 class="text-center">
           MY PROJECT
         </h1>
+        {{#if isLogin}}
         <p class="text-center">
           <a href="/form-blog" class="btn btn-warning">
             Add Project
           </a>
         </p>
+        {{/if}}
         {{!-- <div class="d-flex flex-wrap-reverse flex-row-reverse justify-content-center gap-2"> --}}
         <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 d-flex flex-wrap-reverse flex-row-reverse justify-content-center g-4 p-3">
           {{#each contentBlog}}
@@ -179,6 +195,7 @@
                   <small class="text-body-secondary">
                     {{this.updatedAt}}
                   </small>
+                  {{#if this.isLogin}}
                   <div>
                     <a class="btn btn-warning" href="/edit-blog/{{this.id}}">
                       Edit
@@ -187,6 +204,7 @@
                       Delete
                     </a>
                   </div>
+                  {{/if}}
                 </div>
               </div>
             </div>

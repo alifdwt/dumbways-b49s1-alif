@@ -64,6 +64,11 @@
       {{messages.danger}} Forgot password? <a href="#" class="alert-link">Reset here!</a>.
     </div>
     {{/if}}
+    {{#if isRegistered}}
+    <div class="wrong-password alert alert-success" role="alert">
+      Registration is successfull.
+    </div>
+    {{/if}}
     <main>
       <section class="form container card p-4 mt-4">
         <h1 class="text-center fw-semibold">

@@ -54,6 +54,11 @@
       </div>
     </nav>
     <!-- End Nav -->
+    {{#if messages.danger}}
+    <div class="wrong-password alert alert-danger" role="alert">
+      {{messages.danger}} Please <a href="/login" class="alert-link">log in here!</a>.
+    </div>
+    {{/if}}
     <main>
       <section class="form container card p-4 mt-4">
         <h1 class="text-center fw-semibold">
@@ -98,6 +103,7 @@
               type="checkbox"
               class="form-check-input"
               id="exampleCheck1"
+              required
             />
             <label class="form-check-label" for="exampleCheck1">
               I agree with terms and condition

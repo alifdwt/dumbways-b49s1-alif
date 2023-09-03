@@ -200,20 +200,29 @@ app.post("/register", async (req, res) => {
   try {
     const { inputName, inputEmail, inputPassword } = req.body;
     const salt = 10;
-    await bcrypt.hash(inputPassword, salt, (error, hashPassword) => {
-      const query = `INSERT INTO users(
+    const surel = await sequelize.query(
+      `SELECT email FROM users WHERE email = '${inputEmail}'`
+    );
+    if (surel[0][0]) {
+      req.flash("danger", "Email is already registered.");
+      res.redirect("/register");
+    } else {
+      await bcrypt.hash(inputPassword, salt, (error, hashPassword) => {
+        const query = `INSERT INTO users(
         name, email, password, "createdAt", "updatedAt")
         VALUES ('${inputName}', '${inputEmail}', '${hashPassword}', NOW(), NOW());`;
-      sequelize.query(query);
-      res.redirect("/login");
-    });
+        sequelize.query(query);
+        req.session.isRegistered = true;
+        res.redirect("/login");
+      });
+    }
   } catch (error) {
     console.log(error);
   }
 });
 
 app.get("/login", (req, res) => {
-  res.render("form-login");
+  res.render("form-login", { isRegistered: req.session.isRegistered });
 });
 
 app.post("/login", async (req, res) => {

@@ -168,7 +168,15 @@ app.get("/contact", (req, res) => {
 
 app.get("/blog-content/:id", async (req, res) => {
   const id = req.params.id;
-  const query = `SELECT * FROM content_blogs WHERE id=${id};`;
+  // const query = `SELECT * FROM content_blogs WHERE id=${id};`;
+  const query = `
+    SELECT c.id, c.user_id, project_name, u.name, start_date, end_date, description, technologies, input_img, durasi, c."createdAt", c."updatedAt"
+    FROM content_blogs AS c
+    LEFT JOIN users AS u
+      ON c.user_id = u.id
+    WHERE c.id = ${id}
+    ORDER BY c.id DESC
+  `;
   let obj = await sequelize.query(query, { type: QueryTypes.SELECT });
   res.render("blog-content", { contentBlog: obj[0] });
 });

@@ -5,6 +5,7 @@ const path = require("path");
 const bcrypt = require("bcrypt");
 const session = require("express-session");
 const flash = require("express-flash");
+const upload = require("./src/middlewares/uploadFiles");
 
 // Sequelize init
 const config = require("./src/config/config.json");
@@ -16,6 +17,7 @@ app.set("views", path.join(__dirname, "src/views"));
 
 // Asset Files
 app.use(express.static(path.join(__dirname, "src/assets")));
+app.use(express.static(path.join(__dirname, "src/uploads")));
 app.use(express.urlencoded({ extended: false }));
 
 // Flash setup
@@ -38,7 +40,27 @@ app.use(
 
 app.get("/", async (req, res) => {
   try {
-    const query = `SELECT * FROM content_blogs;`;
+    const userId = req.session.userId;
+    const isLogin = req.session.isLogin;
+    let query;
+    if (!isLogin) {
+      query = `
+        SELECT c.id, c.user_id, project_name, u.name, start_date, end_date, description, technologies, input_img, durasi, c."createdAt", c."updatedAt"
+        FROM content_blogs AS c
+        LEFT JOIN users AS u
+          ON c.user_id = u.id
+        ORDER BY c.id DESC
+        `;
+    } else {
+      query = `
+        SELECT c.id, c.user_id, project_name, u.name, start_date, end_date, description, technologies, input_img, durasi, c."createdAt", c."updatedAt"
+        FROM content_blogs AS c
+        LEFT JOIN users AS u
+          ON c.user_id = u.id
+        WHERE c.user_id = ${userId}
+        ORDER BY c.id DESC
+      `;
+    }
     let obj = await sequelize.query(query, { type: QueryTypes.SELECT });
     const data = obj.map((res) => ({
       ...res,
@@ -56,14 +78,13 @@ app.get("/", async (req, res) => {
 });
 
 app.get("/form-blog", (req, res) => {
-  res.render("form-blog");
+  res.render("form-blog", { userName: req.session.user });
 });
 
-app.post("/form-blog", async (req, res) => {
+app.post("/form-blog", upload.single("inputImg"), async (req, res) => {
   try {
     const {
       projectName,
-      authorName,
       startDate,
       endDate,
       description,
@@ -71,8 +92,10 @@ app.post("/form-blog", async (req, res) => {
       inputReactjs,
       inputVuejs,
       inputJavascript,
-      inputImg,
     } = req.body;
+    const { userId } = req.session;
+    const inputImg = req.file.filename;
+
     const selectedValues = [];
     if (inputNodejs) selectedValues.push('"nodejs"');
     if (inputReactjs) selectedValues.push('"reactjs"');
@@ -81,7 +104,8 @@ app.post("/form-blog", async (req, res) => {
 
     const durasi = getDurasi(startDate, endDate);
     await sequelize.query(
-      `INSERT INTO content_blogs(project_name, author_name, start_date, end_date, description, technologies, input_img, durasi, "createdAt", "updatedAt") VALUES ('${projectName}', '${authorName}', '${startDate}', '${endDate}', '${description}', '[${selectedValues}]', '${inputImg}', '${durasi}', NOW(), NOW());`
+      `INSERT INTO content_blogs(user_id, project_name, start_date, end_date, description, technologies, input_img, durasi, "createdAt", "updatedAt")
+       VALUES ('${userId}', '${projectName}', '${startDate}', '${endDate}', '${description}', '[${selectedValues}]', '${inputImg}', '${durasi}', NOW(), NOW());`
     );
 
     res.redirect("/");
@@ -96,18 +120,17 @@ app.get("/edit-blog/:id", async (req, res) => {
     const query = `SELECT * FROM content_blogs WHERE id=${id}`;
 
     let obj = await sequelize.query(query, { type: QueryTypes.SELECT });
-    res.render("edit-blog", { data: obj[0] });
+    res.render("edit-blog", { data: obj[0], userName: req.session.user });
   } catch (error) {
     console.log(error);
   }
 });
 
-app.post("/edit-blog/:id", async (req, res) => {
+app.post("/edit-blog/:id", upload.single("inputImg"), async (req, res) => {
   try {
     const {
       ids,
       projectName,
-      authorName,
       startDate,
       endDate,
       description,
@@ -115,8 +138,9 @@ app.post("/edit-blog/:id", async (req, res) => {
       inputReactjs,
       inputVuejs,
       inputJavascript,
-      inputImg,
     } = req.body;
+    const inputImg = req.file.filename;
+
     const selectedValues = [];
     if (inputNodejs) selectedValues.push('"nodejs"');
     if (inputReactjs) selectedValues.push('"reactjs"');
@@ -126,7 +150,7 @@ app.post("/edit-blog/:id", async (req, res) => {
     const durasi = getDurasi(startDate, endDate);
     await sequelize.query(
       `UPDATE content_blogs
-      SET project_name = '${projectName}', author_name = '${authorName}', start_date = '${startDate}', end_date = '${endDate}', description = '${description}', technologies = '[${selectedValues}]', input_img = '${inputImg}', "updatedAt" = '${getFullTime(
+      SET project_name = '${projectName}', start_date = '${startDate}', end_date = '${endDate}', description = '${description}', technologies = '[${selectedValues}]', input_img = '${inputImg}', durasi = '${durasi}', "updatedAt" = '${getFullTime(
         new Date()
       )}'
       WHERE id=${ids}`
@@ -146,12 +170,7 @@ app.get("/blog-content/:id", async (req, res) => {
   const id = req.params.id;
   const query = `SELECT * FROM content_blogs WHERE id=${id};`;
   let obj = await sequelize.query(query, { type: QueryTypes.SELECT });
-  const data = obj.map((res) => ({
-    ...res,
-    tecnologies: ["nodejs", "reactjs"],
-  }));
-
-  res.render("blog-content", { data: data[0] });
+  res.render("blog-content", { contentBlog: obj[0] });
 });
 
 app.get("/delete-blog/:id", async (req, res) => {
@@ -206,6 +225,7 @@ app.post("/login", async (req, res) => {
         return res.redirect("/login");
       } else {
         req.session.isLogin = true;
+        req.session.userId = obj[0].id;
         req.session.user = obj[0].name;
         req.flash("success", "Log in success!");
         res.redirect("/");

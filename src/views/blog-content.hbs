@@ -55,35 +55,30 @@
     <!-- End Nav -->
     <main class="mt-4">
       <section class="content container">
-        <h1 class="fw-bold text-center">{{data.project_name}}</h1>
+        <h1 class="fw-bold text-center">{{contentBlog.project_name}}</h1>
         <div class="row my-4 p-2 bg-danger-subtle">
-          <img
-            class="col-12 col-lg-6 img-fluid object-fit-cover"
-            src="{{#if data.input_img}}{{data.input_img}}{{else}}/images/Placeholder_view_vector.svg.png{{/if}}"
-            alt="thumb-img"
-            style="height: 375px;"
-          />
+          <img src="/images/{{contentBlog.input_img}}" class="col-12 col-lg-6 img-fluid object-fit-cover" alt="thumb-img" style="height: 375px;">
           <div class="col-12 col-lg-6 banner-desc">
             <h2>Duration</h2>
             <p>
               <i class="fa-regular fa-calendar-days"></i>
-              {{data.start_date}}
+              {{contentBlog.start_date}}
               -
-              {{data.end_date}}
+              {{contentBlog.end_date}}
             </p>
             <p><i class="fa-solid fa-clock"></i> 2 months</p>
             <h2>Technologies</h2>
             <div class="d-flex techstack">
-              {{data.technologies}}
+              {{contentBlog.technologies}}
             </div>
             <h2>Author</h2>
-            <p>{{data.author_name}}</p>
+            <p>{{contentBlog.author_name}}</p>
             <h2>Published</h2>
-            <p>{{data.createdAt}}</p>
+            <p>{{contentBlog.createdAt}}</p>
           </div>
         </div>
         <div class="blog-content">
-          {{data.description}}
+          {{contentBlog.description}}
         </div>
       </section>
     </main>

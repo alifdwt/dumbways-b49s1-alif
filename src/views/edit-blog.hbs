@@ -54,7 +54,7 @@
       <!-- BLOG FORM -->
       <section class="container my-4 p-4 card">
         <h1 class="text-center">EDIT MY PROJECT</h1>
-        <form class="row g-2" method="post" action="edit-blog">
+        <form class="row g-2" method="post" action="edit-blog" enctype="multipart/form-data">
           <div class="col-12">
             <label for="projectName" class="form-label">Project Name</label>
             <input
@@ -72,7 +72,8 @@
               name="authorName"
               class="form-control"
               id="authorName"
-              value="{{data.author_name}}"
+              value="{{userName}}"
+              disabled
             />
           </div>
           <div class="col-md-6">
@@ -114,7 +115,6 @@
                 type="checkbox"
                 name="inputNodejs"
                 id="input-nodejs"
-                {{#if data.inputNodejs}} checked {{/if}}
               />
               <label class="form-check-label" for="input-nodejs">
                 Node JS</label>
@@ -125,7 +125,6 @@
                 type="checkbox"
                 name="inputReactjs"
                 id="input-reactjs"
-                {{#if data.inputReactjs}} checked {{/if}}
               />
               <label class="form-check-label" for="input-reactjs">
                 React JS</label>
@@ -138,7 +137,6 @@
                 type="checkbox"
                 name="inputVuejs"
                 id="input-vuejs"
-                {{#if data.inputVuejs}} checked {{/if}}
               />
               <label class="form-check-label" for="input-vuejs"> Vue JS</label>
             </div>
@@ -148,16 +146,26 @@
                 type="checkbox"
                 name="inputJavascript"
                 id="input-javascript"
-                {{#if data.inputJavascript}} checked {{/if}}
               />
               <label class="form-check-label" for="input-javascript">
                 JavaScript</label>
             </div>
           </div>
           <div class="col-11 mb-3">
+            <label for="inputImg" class="form-label">
+              Thumbnail Image
+            </label>
+            <input
+              class="form-control"
+              type="file"
+              id="inputImg"
+              name="inputImg"
+            />
+          </div>
+          {{!-- <div class="col-11 mb-3">
             <label for="inputImg" class="form-label">Image</label>
             <input class="form-control" type="text" id="inputImg" name="inputImg" placeholder="Insert Image URL Here" value="{{data.input_img}}"/>
-          </div>
+          </div> --}}
           <div class="col-1 mb-3">
             <label for="ids" class="form-label">Ids</label>
             <input type="number" name="ids" class="form-control" id="ids" value="{{data.id}}">
@@ -173,5 +181,17 @@
       integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
       crossorigin="anonymous"
     ></script>
+    <script>
+      const fileInput = document.querySelector('input[type="file"]');
+
+      const myFile = new File(['Hello World!'], '{{data.input_img}}', {
+          lastModified: new Date(),
+      });
+
+      const dataTransfer = new DataTransfer();
+      dataTransfer.items.add(myFile);
+      fileInput.files = dataTransfer.files;
+
+  </script>
   </body>
 </html>

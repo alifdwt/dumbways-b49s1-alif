@@ -60,7 +60,7 @@
         <h1 class="text-center">
           ADD MY PROJECT
         </h1>
-        <form class="row g-2" method="post" action="form-blog">
+        <form class="row g-2" method="post" action="form-blog" enctype="multipart/form-data">
           <div class="col-12">
             <label for="projectName" class="form-label">
               Project Name
@@ -81,6 +81,8 @@
               name="authorName"
               class="form-control"
               id="authorName"
+              value="{{userName}}"
+              disabled
             />
           </div>
           <div class="col-md-6">
@@ -173,9 +175,9 @@
               </label>
             </div>
           </div>
-          {{! <div class="mb-3">
+          <div class="mb-3">
             <label for="inputImg" class="form-label">
-              Default file input example
+              Thumbnail Image:
             </label>
             <input
               class="form-control"
@@ -183,8 +185,8 @@
               id="inputImg"
               name="inputImg"
             />
-          </div> }}
-          <div class="mb-3">
+          </div>
+          {{!-- <div class="mb-3">
             <label for="inputImg" class="form-label">
               Image
             </label>
@@ -195,7 +197,7 @@
               name="inputImg"
               placeholder="Insert image link here"
             />
-          </div>
+          </div> --}}
           <div class="col-12 d-md-flex justify-content-md-end">
             <button type="submit" class="btn btn-warning">
               Submit

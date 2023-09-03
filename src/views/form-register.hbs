@@ -64,7 +64,7 @@
             <label for="inputName" class="form-label">
               Name
             </label>
-            <input type="text" class="form-control" id="inputName" name="inputName"/>
+            <input type="text" class="form-control" id="inputName" name="inputName" required/>
           </div>
           <div class="col-12 mb-3">
             <label for="inputEmail" class="form-label">
@@ -76,6 +76,7 @@
               id="inputEmail"
               name="inputEmail"
               aria-describedby="emailHelp"
+              required
             />
             <div id="emailHelp" class="form-text">
               We'll never share your email with anyone else.
@@ -89,7 +90,8 @@
               type="password"
               class="form-control"
               id="inputPassword"
-              name="inputPassword" />
+              name="inputPassword"
+              required />
           </div>
           <div class="mb-3 form-check">
             <input
@@ -105,7 +107,7 @@
             <button type="submit" class="btn btn-warning col-6">
               Register
             </button>
-            <a class="btn btn-primary col-6" href="/form-login">
+            <a class="btn btn-primary col-6" href="/login">
               Already an user? Let's login
             </a>
           </div>

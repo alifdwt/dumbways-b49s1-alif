@@ -157,12 +157,12 @@
         </p>
         {{/if}}
         {{!-- <div class="d-flex flex-wrap-reverse flex-row-reverse justify-content-center gap-2"> --}}
-        <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 d-flex flex-wrap-reverse flex-row-reverse justify-content-center g-4 p-3">
+        <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4 p-3">
           {{#each contentBlog}}
             <div class="col">
               <div class="card h-100">
                 <img
-                  src="{{#if input_img}}{{this.input_img}}{{else}}images/Placeholder_view_vector.svg.png{{/if}}"
+                  src="{{this.input_img}}"
                   class="card-img-top img-thumbnail img-fluid object-fit-cover"
                   alt="thumb-img"
                   style="height: 300px"
@@ -178,7 +178,7 @@
                   </h5>
                   <span class="text-body-tertiary">
                     Author:
-                    {{this.author_name}}
+                    {{this.name}}
                     |
                     Durasi: {{this.durasi}}
                   </span>
